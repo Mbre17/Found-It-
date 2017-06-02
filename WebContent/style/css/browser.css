@@ -1,0 +1,274 @@
+@CHARSET "ISO-8859-1";
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+html{
+  position:relative; 
+  min-height: 100%;
+}
+
+body{
+	background-color: #fafafa;
+}
+
+#wrapper{
+	margin:10px;
+	margin-bottom:80px;
+} 
+.color{
+	background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+	color: white !important;
+	font-family: lato;
+}
+
+.div-box{
+    background-color: #FFF;
+    padding: 8px;
+    border: 1px solid #DDD;
+}
+
+.horizontal{
+	display: flex !important;  
+	
+}
+
+
+.icon{
+	size: 20px !important;
+}
+
+header{
+	border: 1px solid black;
+	border-radius:40px;
+	width:99%;	
+	margin-left: 6px;
+	height: 80px;
+	background: linear-gradient(141deg, #FF0000 0%, #FF1616 51%, #EE9587 90%);
+}
+
+.logo{
+	float: left;
+	margin-left: 5%;	
+}
+
+.logo a{
+	color: #f20000;
+	font-size: 30px;
+	margin-top: 0px;
+	display: block;
+	text-decoration: none;
+}	
+.menu{
+	float: right;
+	margin-right: 5%;
+}
+.menu ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	margin-top: 30px;
+}
+.menu ul li{
+	float: left;
+}
+.menu ul li a{
+	color: #000;
+	text-decoration: none;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+@media screen and (min-width: 450px){
+	
+	.divHorizontal{
+	    display: -webkit-flex; /* Safari */
+	    -webkit-justify-content: space-around; /* Safari 6.1+ */
+	    display: flex;
+	    justify-content: space-around;
+	}
+	
+}
+
+
+.footer{
+	border: 1px solid black;
+	border-radius:40px;
+	width:99%;
+	margin-left: 6px;
+	background: linear-gradient(141deg, #FF0000 0%, #FF1616 51%, #EE9587 90%);
+	text-align: center;
+	height: 80px !important;
+	position: absolute;
+    bottom: 0;
+    
+}
+
+
+.inutile{
+	display: inline;
+}
+
+.recPsw{
+	color:#2370c5;
+}
+
+.recPsw:hover{
+	cursor:pointer;	
+	color:#154579;
+	text-decoration:underline;
+	
+}
+
+#log{
+	color:#2370c5;
+}
+
+#log:hover{
+	cursor:pointer;	
+	color:#154579;
+	text-decoration:underline;
+}
+
+.form-control{
+	width: 80% !important;
+}
+
+
+.container{
+	width: 100% !important;
+}
+
+.hide{
+	display:none;
+}
+
+
+.input-length{
+	width: 33% !important;
+}
+
+.left-side{
+	padding-left: 88%;
+}
+
+.distance{
+	width: 250px;
+}
+
+.but{
+	border: 0px !important; 
+	background-color: transparent !important;
+}
+
+
+.screen{
+	
+}
+
+.naviBar{
+		display: none !important;
+		
+}
+
+.text-color{
+	color: white !important;
+}
+
+.tarDiv{
+	display: none !important;
+}
+
+.display-block{
+	display: inline !important;
+}
+
+
+.row-374{
+    margin-top:40px;
+   
+    padding: 0 10px;
+}
+
+.clickable{
+	    cursor: pointer;   
+}
+
+.panel-heading div {
+	margin-top: -18px;
+	font-size: 15px;
+}
+.panel-heading div span{
+	margin-left:5px;
+}
+.panel-body{
+	display: none;
+}
+
+
+.container-table{
+	padding: 0px; 
+	margin-bottom: 40px;
+}
+
+
+@media only screen and (max-width: 1060px) {
+    
+    /* Force table to not be like tables anymore */
+	#no-more-tables table, 
+	#no-more-tables thead, 
+	#no-more-tables tbody, 
+	#no-more-tables th, 
+	#no-more-tables td, 
+	#no-more-tables tr { 
+		display: block; 
+	}
+ 
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#no-more-tables thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+ 
+	#no-more-tables tr { border: 1px solid #ccc; }
+ 
+	#no-more-tables td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+		white-space: normal;
+		text-align:left;
+	}
+ 
+	#no-more-tables td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+	}
+ 
+	/*
+	Label the data
+	*/
+	#no-more-tables td:before { content: attr(data-title); }
+}
+
+.menu-text{
+	color : white !important;
+}
+
+
+.center {
+    margin: 0 auto;
+    width: 70%;
+}
