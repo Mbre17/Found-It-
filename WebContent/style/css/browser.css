@@ -1,5 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+/*rivedere il font*/
+*{
+	font-family: verdana;
+}
+
 html,body{
   margin:0;
   padding:0;
@@ -12,6 +17,84 @@ html{
 
 body{
 	background-color: #fafafa;
+}
+
+.container {
+	background-color:azure;
+	width: 80%;
+	display: table;
+	border-collapse: collapse;
+    padding-right: 1%;
+    padding-left: 1%;
+    padding-top: 1%;
+    margin-bottom:1%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+section{	
+	display: table-cell;
+	width: auto;
+	padding-right: 2%;
+	padding-left: 2%;
+}
+
+#containerSuperiore {
+	border-radius:20px ;
+	border: 1px solid black;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:7%;
+	margin-bottom:10%;
+	width:80%;
+	background-color:azure;
+}
+
+#containerSuperiore .formelement {
+    margin-top: 1.5%;
+    width: 100%;
+        
+}
+
+#containerSuperiore label.registra{
+	display: inline-block;
+    max-width: 100%;
+    width: 25%;
+    font-weight: 700;
+	float:left;
+}
+
+input::placeholder {
+  text-align:right;
+}
+
+input.campi{
+	border: 1px solid black;
+	width: 30%;
+	padding-left:90px;
+	padding-right: 90px;
+}
+
+
+.image-box {
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+div.top{
+	border-radius:20px ;
+	background-color: red;
+	padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 0.5%; 
+    padding-bottom: 1%;
+	margin-bottom: 2%;
+}
+.buttonreg{
+	width:20%;
+	margin-bottom:4%; 
+	margin-top: 2%;
 }
 
 #wrapper{
@@ -31,10 +114,8 @@ body{
 }
 
 .horizontal{
-	display: flex !important;  
-	
+	display: flex !important;  	
 }
-
 
 .icon{
 	size: 20px !important;
@@ -71,24 +152,26 @@ header{
 	list-style: none;
 	margin-top: 30px;
 }
+
 .menu ul li{
 	float: left;
 }
+
 .menu ul li a{
 	color: #000;
 	text-decoration: none;
 	margin-left: 10px;
 	margin-right: 10px;
 }
-@media screen and (min-width: 450px){
-	
-	.divHorizontal{
-	    display: -webkit-flex; /* Safari */
-	    -webkit-justify-content: space-around; /* Safari 6.1+ */
-	    display: flex;
-	    justify-content: space-around;
-	}
-	
+
+.menu-text{
+	color : white !important;
+}
+
+
+.center {
+    margin: 0 auto;
+    width: 70%;
 }
 
 
@@ -213,9 +296,46 @@ header{
 }
 
 
-@media only screen and (max-width: 1060px) {
-    
-    /* Force table to not be like tables anymore */
+
+/*********************************************/
+@media only screen and (max-width: 1060px){
+
+		body {
+			width: 95%;
+			font-size: small;
+	    }
+		
+		input.campi{
+			width: 55%;
+			padding-left:5%;
+			padding-right: 10%;
+		}
+		
+		#containerSuperiore {
+			margin-left:auto;
+			margin-right:auto;
+			margin-top:4%;
+			margin-bottom:30%;
+			width:55%;
+			background-color:azure;
+		}
+				
+		#containerSuperiore label.registra{
+ 		   max-width: 100%;
+    	   width: 30%;
+    	   font-weight: 600;
+		   float:left;
+		}
+		img{
+		width: 110px;
+		height: auto;
+		}
+		
+		.buttonreg{
+			width:55%
+		}
+		
+     /* Force table to not be like tables anymore */
 	#no-more-tables table, 
 	#no-more-tables thead, 
 	#no-more-tables tbody, 
@@ -257,18 +377,64 @@ header{
 		font-weight: bold;
 	}
  
-	/*
-	Label the data
-	*/
+	/* Label the data */
 	#no-more-tables td:before { content: attr(data-title); }
-}
-
-.menu-text{
-	color : white !important;
+		
 }
 
 
-.center {
-    margin: 0 auto;
-    width: 70%;
+	
+/*************************************************************************************/
+@media screen and (max-width: 580px) {
+
+	#containerSuperiore {
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:4%;
+		margin-bottom:30%;
+		width:95%;
+		background-color:azure;
+	}
+	
+	.container {
+	background-color:azure;
+	width: 85%;
+	}
+			
+	#containerSuperiore label.registra {
+ 		max-width: 100%;
+    	width: 40%;
+    	font-weight: 600;
+		float:left;
+	}
+	
+	input.campi{
+		font-size:xx-small;
+		width: 60%;
+		padding-left:10%;
+		padding-right: 5%;
+	}
+	
+	img{
+		width: 110px;
+		height: auto;
+	}
+	
+	.buttonreg{
+	width:50%
+	}
+}
+
+
+
+/*************************************************************************************/
+@media screen and (min-width: 450px){
+	
+	.divHorizontal{
+	    display: -webkit-flex; /* Safari */
+	    -webkit-justify-content: space-around; /* Safari 6.1+ */
+	    display: flex;
+	    justify-content: space-around;
+	}
+	
 }
