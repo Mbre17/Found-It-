@@ -125,7 +125,8 @@ header{
 	border: 1px solid black;
 	border-radius:40px;
 	width:99%;	
-	margin-left: 6px;
+	margin-left: auto;
+	margin-right: auto;
 	height: 80px;
 	background: linear-gradient(141deg, #FF0000 0%, #FF1616 51%, #EE9587 90%);
 }
@@ -135,13 +136,6 @@ header{
 	margin-left: 5%;	
 }
 
-.logo a{
-	color: #f20000;
-	font-size: 30px;
-	margin-top: 0px;
-	display: block;
-	text-decoration: none;
-}	
 .menu{
 	float: right;
 	margin-right: 5%;
@@ -164,6 +158,11 @@ header{
 	margin-right: 10px;
 }
 
+.menu .icon{
+  display: none;
+}
+
+}
 .menu-text{
 	color : white !important;
 }
@@ -301,6 +300,8 @@ header{
 @media only screen and (max-width: 1060px){
 
 		body {
+			margin-left: auto;
+			margin-right: auto;
 			width: 95%;
 			font-size: small;
 	    }
@@ -423,6 +424,32 @@ header{
 	.buttonreg{
 	width:50%
 	}
+	
+	.menu nav ul li a{
+ 		display: none;
+ 	}
+ 	
+  	.menu a.icon {
+    float: right;
+    display: block;
+  	}
+  	
+  	.menu.responsive {
+  		position: relative;
+  	}
+  	
+  	.menu.responsive .icon {
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+  	}
+  	
+  	.menu.responsive ul {
+    	float: left;
+    	display: block;
+    	text-align: left;
+  	}
+  	
 }
 
 
