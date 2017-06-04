@@ -64,17 +64,16 @@ section{
 	float:left;
 }
 
-input::placeholder {
-  text-align:right;
+select,input.campi{
+	border-radius: 7px;
+	width: 40%;
+	padding-left:5%;
+	padding-right: 5%;
 }
 
-input.campi{
-	border: 1px solid black;
-	width: 30%;
-	padding-left:90px;
-	padding-right: 90px;
+select{
+	width: 50%;
 }
-
 
 .image-box {
     text-align: center;
@@ -162,17 +161,14 @@ header{
   display: none;
 }
 
-}
 .menu-text{
 	color : white !important;
 }
-
 
 .center {
     margin: 0 auto;
     width: 70%;
 }
-
 
 .footer{
 	border: 1px solid black;
@@ -187,7 +183,6 @@ header{
     
 }
 
-
 .inutile{
 	display: inline;
 }
@@ -199,8 +194,7 @@ header{
 .recPsw:hover{
 	cursor:pointer;	
 	color:#154579;
-	text-decoration:underline;
-	
+	text-decoration:underline;	
 }
 
 #log{
@@ -244,14 +238,12 @@ header{
 	background-color: transparent !important;
 }
 
-
 .screen{
 	
 }
 
 .naviBar{
-		display: none !important;
-		
+		display: none !important;		
 }
 
 .text-color{
@@ -266,10 +258,8 @@ header{
 	display: inline !important;
 }
 
-
 .row-374{
-    margin-top:40px;
-   
+    margin-top:40px;   
     padding: 0 10px;
 }
 
@@ -306,10 +296,13 @@ header{
 			font-size: small;
 	    }
 		
-		input.campi{
-			width: 55%;
-			padding-left:5%;
-			padding-right: 10%;
+		select,input.campi{
+			width: 75%;
+			padding-left:1%;
+			padding-right: 1%;
+		}
+		select{
+			width: 80%;
 		}
 		
 		#containerSuperiore {
@@ -409,11 +402,14 @@ header{
 		float:left;
 	}
 	
-	input.campi{
+	select,input.campi{
 		font-size:xx-small;
-		width: 60%;
+		width: 65%;
 		padding-left:10%;
 		padding-right: 5%;
+	}
+	select{
+		width: 80%;
 	}
 	
 	img{

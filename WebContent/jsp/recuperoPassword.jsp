@@ -31,7 +31,7 @@
 				<label>Inserisci l'indirizzo completo: </label>
 				<br>
 				<br>
-				<input id="email" type="email" name="email" placeholder="name@exemple.com">
+				<input class="campi" id="email" type="email" name="email" placeholder="name@exemple.com">
 				<br>
 				<br>
 				<b>Verifica di sicurezza</b>
@@ -43,6 +43,7 @@
 				<br>
 				      <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 				
+					<br>
 					<button style="margin-left: 50px; float: right;" type="submit" id="submit" name="submit">Annulla</button>
 					<button style="float: right" type="submit" id="submit" name="submit">Conferma</button>
 					<br>
