@@ -97,7 +97,8 @@ div.top{
 }
 
 #wrapper{
-	margin:10px;
+	margin-right: auto;
+	margin-left: auto;
 	margin-bottom:80px;
 } 
 .color{
