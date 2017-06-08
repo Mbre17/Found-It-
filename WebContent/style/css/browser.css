@@ -239,10 +239,6 @@ header{
 	background-color: transparent !important;
 }
 
-.screen{
-	
-}
-
 .naviBar{
 		display: none !important;		
 }
@@ -277,63 +273,53 @@ header{
 }
 .panel-body{
 	display: none;
-}
+}	
 
-.container-table{
-	padding: 0px; 
-	margin-bottom: 40px;
-}
-
-#tabs { font-size: small; }
-#tabs li {
-    list-style: none;
-    float: left;
-    width: 200px;
-    height: 35px;
-    margin: 0;
-    margin-left: -40px;
-    border-bottom: 5px solid rgba(255, 196, 28, 0.8);
-	background-color: #ff1c1c;
-}
-    #tabs li a {
-        background-color: rgba(255, 0, 0, 0.94);
-        color: #fff;
-        font-weight: bold;
-        text-decoration: none;
-        width: 200px;
-        height: 35px;
-        display: block;
-        float: left;
-        line-height: 35px;
-        text-align: center;
-    }
-        #tabs li a:hover,
-        #tabs li a:active { 
-        background-color: rgba(255, 196, 28, 0.78);
-    	border-bottom: 5px solid rgba(28, 255, 161, 0.8);
-    	width: 200px;
-    	 }
-
-	div.content {
-        color: #222;
-        font-family: Verdana;
-        font-size: small;
-        background-color: rgba(255, 0, 0, 0.83);
-        padding: 25px;
-        width: 800px;
-        height: 350px;
-        line-height: 22px;
-    }
-	
-	#containerTab { clear: both; height: 400px; overflow: hidden; }
-	div.allineasinistra{
-		float:left;
-		margin-top:30px;
-		
+	div.displayTab {
+		display: inline-flex;
+		margin-top: 1.5%;
 	}
-	div.displayTab{
-	display:inline-flex;	
-	margin-bottom:7%;
+
+	div.tabContainer {
+		margin-left: auto;
+		margin-right: auto;
+		width: 80%;
+	}
+	/* Style the tab */
+	div.tab {
+		overflow: hidden;
+    	border: 1px solid #222;
+    	background-color: #ff0000;
+	}
+
+/* Style the buttons inside the tab */
+	div.tab button {
+    	background-color: inherit;
+    	float: left;
+    	border: none;
+    	outline: none;
+    	cursor: pointer;
+    	padding: 14px 16px;
+    	transition: 0.6s;
+	}
+
+/* Change background color of buttons on hover */
+	div.tab button:hover {
+    	background-color: #EE9587;
+	}
+
+/* Create an active/current tablink class */
+	div.tab button.active {
+    	background-color: #EE9587;
+	}
+
+/* Style the tab content */
+	.tabcontent {
+		display: none;
+    	padding: 6px 12px;
+    	border: 1px solid #ccc;
+    	border-top: none;
+    	background-color: #FF1616;
 	}
 
 /*********************************************/

@@ -13,6 +13,11 @@
 		
 	<!--Css document  -->		
 	<link rel="stylesheet" href="../style/css/browser.css" type="text/css" />
+	<style type="text/css">
+		div.displayTab label.registra {
+			min-width: 100px;
+		}
+	</style>
 </head>
 <body>
 	<%@include file="header.jsp"%>	
@@ -20,105 +25,124 @@
 		<div class="top">
 			<h2><center>PROFILO UTENTE</center></h2>
 		</div>
-	<hr>
-	<div class="container ">
-		<br><br><br>	
-		<div class="image-box">
-			<center><b>Nome Utente</b></center>
-			<br>
-            <img src="../images/userStandard.png" id="user" alt="fotoUser">
-            <br>
-            <button type="submit" id="submit" name="submit">Cambia immagine del profilo</button>
- 			<br><br>
- 		</div>
- 	<center>
- 	<section>                  
-		<ul id="tabs">
-    		<li><a href="#tab1">Dati Personali</a></li>
-     	   	<li><a href="#tab2">Dati Profilo</a></li>
-    		<li><a href="#tab3">Privacy e Sicurezza</a></li>
-		</ul>
- 		<div id="containerTab">
-    		<div class="content">
-       			<a name="tab1" id="tab1"></a>
-        		<h2>Dati Personali</h2>
-        		<hr>
-        		<div class="allineasinistra">
+		<hr>
+		<div class="container ">
+			<br><br><br>	
+			<div class="image-box">
+				<center><b>Nome Utente</b></center>
+				<br>
+            	<img src="../images/userStandard.png" id="user" alt="fotoUser">
+            	<br>
+            	<button type="submit" id="submit" name="submit">Cambia immagine del profilo</button>
+ 				<br><br>
+ 			</div>
+ 			
+ 		<div class="tabContainer">	
+ 			<div class="tab">
+  				<button style="width:33.33%;" class="tablinks" onclick="openCity(event, 'Dati Personali')" id="defaultOpen">Dati Personali</button>
+  				<button style="width:33.33%; border-left:1px solid black; border-right:1px solid black;" class="tablinks" onclick="openCity(event, 'Dati Profilo')">Dati Profilo</button>
+  				<button style="width:33.33%;" class="tablinks" onclick="openCity(event, 'Privacy e Sicurezza')">Privacy e Sicurezza</button>
+			</div>
+
+			<div align="center" id="Dati Personali" class="tabcontent">
+			<h2>Dati Profilo</h2>
+  				<div class="allineasinistra">
         			<section style="width: 50%;">
-        				<label class="registra">Nome</label>
+        				
+        				
         				<div class="displayTab">
+							<label class="registra">Nome</label>						
 							<input id="nome" type="text" name="nome"> 
-							<button type="submit" id="submit" name="submit">Cambia</button>
 						</div>
-						<label class="registra">Cognome</label>
-						<div class="displayTab">	
+						
+						<div class="displayTab">
+							<label class="registra">Cognome</label>	
 							<input id="cogname" type="text" name="cognome">
-				 			<button type="submit" id="submit" name="submit">Cambia</button>
 						</div>
 			
-						<label class="registra">Città</label>
 						<div class="displayTab"> 
+							<label class="registra">Città</label>
 							<input id="città" type="text" name="città">
-							<button type="submit" id="submit" name="submit">Cambia</button>
 						</div>
 					</section>
 							
 					<section style="width: 50%;">
-						<label class="registra">Provincia</label> 
+												 
 						<div class="displayTab">	
+							<label class="registra">Provincia</label>
 							<input  id="provincia" type="text" name="provincia">
-							<button type="submit" id="submit" name="submit">Cambia</button>
 						</div>
-					
-						<label  class="registra">Cap</label>
+											
 						<div class="displayTab">
+							<label  class="registra">Cap</label>
 							<input id="cap" type="text" name="cap">
-							<button type="submit" id="submit" name="submit">Cambia</button>
 						</div>
-					
-						<label class="registra">Telefono</label>
+											
 						<div class="displayTab">
+							<label class="registra">Telefono</label>
 							<input id="telefono" type="text" name="telefono">
-							<button type="submit" id="submit" name="submit">Cambia</button>
 	 					</div>
-					</section>			
-        		</div>
-    		</div> 		
-      </section>
-	 </center>
-    		<div class="content">
-        		<a name="tab2" id="tab2"></a>
-        		<h2>Dati Profilo</h2>
-				<hr>
-				        	
-        		<label class="registra">Nome</label>
-        		<div class="displayTab">
-					<input id="nome" type="text" name="nome"> 
-					<button type="submit" id="submit" name="submit">Cambia</button>
-				</div>
-				
-				<label class="registra">Cognome</label>
-				<div class="displayTab">	
-					<input id="cogname" type="text" name="cognome">
-				 	<button type="submit" id="submit" name="submit">Cambia</button>
-				</div>
-			
-				<label class="registra">Città</label>
-				<div class="displayTab"> 
-					<input id="città" type="text" name="città">
-					<button type="submit" id="submit" name="submit">Cambia</button>
-				</div>
-     		</div>
-    			
-    		<div class="content">
-        		<a name="tab3" id="tab3"></a>
-        		<h2>Privacy e Sicurezza</h2>
-        		<p>uffa</p>
-    		</div>
-		</div>
-	</div>	
-	</div>
+					</section>		
+					<br><br>
+					<button type="submit" id="cambiaDatiProfilo" name="cambiaDatiPersonali">Cambia</button>
+					<br><br><br>	
+        		</div>    		
+			</div>
 
-	<%@include file="footer.jsp"%>	
+			<div align="center" id="Dati Profilo" class="tabcontent">
+  				<h2>Dati Profilo</h2>
+  				
+  				<div style="width: 50%; margin-left: auto; margin-right: auto;">
+  					<div class="displayTab">
+						<label  class="registra">Usurname</label>
+				 		<input id="usurname" type="text" name="usurname"> 
+					</div>
+				
+					<div class="displayTab">
+						<label  class="registra">Password</label>
+				 		<input	id="password" type="password" name="password">	 
+					</div>
+				
+					<div class="displayTab">
+						<label  class="registra">Email<span style="color: #FF0000">*</span></label>
+				 		<input id="email" type="email" name="email">				 
+   					</div>
+   					<br><br>
+					<button style="width:40%; margin-left:20%;" type="submit" id="cambiaDatiProfilo" name="cambiaDatiProfilo">Cambia</button>
+					<br><br><br>
+   				</div>
+   					
+			</div>
+
+			<div id="Privacy e Sicurezza" class="tabcontent">
+  				<h2>Privacy e Sicurezza</h2>   
+  				<h3>Informativa sul trattamento dei dati personali</h3>
+  				<p>Found It rispetta e tutela la privacy dei propri utenti.<br>Al fine di rafforzare la fiducia dei nostri utenti, ed anche ai sensi dell&rsquo;art. 13 del Codice della Privacy (d.lgs. 196 del 30 giugno 2003), forniamo l&rsquo;informativa relativa al trattamento dei dati personali eventualmente forniti dagli utenti che interagiscono con i servizi web di Found It<br>
+     				La presente informativa &egrave; relativa esclusivamente all&rsquo; eventuale trattamento di suoi dati personali da Lei comunicati o altrimenti ottenuti da Found It! per effetto del Suo utilizzo del Sito. Specifiche informative di privacy verranno riportate o visualizzate nelle pagine del sito predisposte alla fornitura di particolari servizi a richiesta.
+  				</p>
+			</div>
+ 		</div>
+	</div>	
+</div>
+
+	<%@include file="footer.jsp"%>
+	<script>
+		function openCity(evt, cityName) {
+    		var i, tabcontent, tablinks;
+    		tabcontent = document.getElementsByClassName("tabcontent");
+    		for (i = 0; i < tabcontent.length; i++) {
+        		tabcontent[i].style.display = "none";
+   		 	}
+    		tablinks = document.getElementsByClassName("tablinks");
+    		for (i = 0; i < tablinks.length; i++) {
+        		tablinks[i].className = tablinks[i].className.replace(" active", "");
+    		}
+    		document.getElementById(cityName).style.display = "block";
+    		evt.currentTarget.className += " active";
+		}
+		
+		document.getElementById("defaultOpen").click();
+	</script>
+     	
 </body>
 </html>
