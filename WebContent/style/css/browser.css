@@ -479,6 +479,7 @@ header{
 	.container {
 	background-color:azure;
 	width: 85%;
+	border-radius: inherit;
 	}
 			
 	#containerSuperiore label.registra {

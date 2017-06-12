@@ -5,7 +5,7 @@
 <head>
 <link href="../style/css/browser.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Found It!</title>
+<title>Found It! | Home</title>
 <style type="text/css">
 	table{
 		width: 100%;
@@ -40,7 +40,7 @@
 							<td>Quale sport vuoi praticare?</td>
 							<td>Dove?</td>
 							<td>Quando?</td>
-							<td> A che ora?</td>
+							<td>A che ora?</td>
 						</tr>
 						<tr>
 							<td>
