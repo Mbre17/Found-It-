@@ -20,6 +20,7 @@ body{
 }
 
 .container {
+	border-radius: inherit;
 	background-color:azure;
 	width: 80%;
 	display: table;
