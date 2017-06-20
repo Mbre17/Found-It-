@@ -20,7 +20,7 @@
 <body>
 
 	<%@include file="header.jsp"%>	
-	<form id="containerSuperiore" method="POST">
+	<form id="containerSuperiore" action="../RegistrationController" method="POST">
 		<div class="top">
 				<h2><center>REGISTRAZIONE</center></h2>
 		</div>
