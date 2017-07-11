@@ -1,8 +1,8 @@
 //Questa funzione controlla che tutti i campi della registrazione siano compilati correttamente
 var regex  = {
-		nome:"^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$", cognome:"^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$", 
+		nome:"^(?=.{3,25}$)^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$", cognome:"^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$", 
 		citta:"^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$" ,provincia:"^[A-Za-zèùàòé][a-zA-Z'èùàòé ]*$" ,
-		cap:"^[0-9]{5}$" , telefono:"(^[0|3]{1}[0-9]{5,10}$)" , email:"^[a-zA-Z0-9_]+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$" ,
+		cap:"^[0-9]{5}$" , telefono:"(^[0|3]{1}[0-9]{5,10}$)" , email:"^[a-zA-Z0-9_.-]+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$" ,
 		username:"^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" ,
 		password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9$@$!%*?&]{8,30}"
 			}
@@ -22,69 +22,66 @@ function validateForm(){
 	var confpassword= document.registrazione.confpassword.value;
 	var possiediCampiSportivi = document.registrazione.possiedicampisportivi.value;
 
-	//modificare la regex per vedere se il nome è compreso tra 0 e 25
 	if (isEmpty(nome,"nome")){
 		return false;
 	}
 	if (!isAValidString(nome,regex.nome,"nome")){
-		return false
+		return false;
 	}
 	if (isEmpty(cognome,"cognome")){
 		return false;
 	}
 	if (!isAValidString(cognome,regex.cognome,"cognome")){
-		return false
+		return false;
 	}
 	if (isEmpty(citta,"citta")){
 		return false;
 	}
 	if (!isAValidString(citta,regex.citta,"citta")){
-		return false
+		return false;
 	}
 	if (isEmpty(provincia,"provincia")){
 		return false;
 	}
 	if (!isAValidString(provincia,regex.provincia,"provincia")){
-		return false
+		return false;
 	}
 	if (isEmpty(cap,"cap")){
 		return false;
 	}
 	if (!isAValidString(cap,regex.cap,"cap")){
-		return false
+		return false;
 	}
 	if (isEmpty(telefono,"telefono")){
 		return false;
 	}
 	if (!isAValidString(telefono,regex.telefono,"telefono")){
-		return false
+		return false;
 	}
 	if (isEmpty(email,"email")){
 		return false;
 	}
-	
-	//rivedere la regex email un email tipo angela.vecchione94@hotmail.it nn viene accettata
 	if (!isAValidString(email,regex.email,"email")){
-		return false
+		return false;
 	}
 	if (isEmpty(username,"username")){
 		return false;
 	}
 	if (!isAValidString(username,regex.usurname,"username")){
-		return false
+		return false;
 	}
 	if (isEmpty(password,"password")){
 		return false;
 	}
 	if (!isAValidString(password,regex.password,"password")){
-		return false
+		return false;
 	}
 	if (isEmpty(confpassword,"conferma password")){
 		return false;
 	}
-	//non confronta le due stringhe rivedere
-	if(confpassword.equals(password)){
+	if((password.localeCompare(confpassword))!= 0){
 		alert("Password e conferma password non corrispondono");
+		return false;
 	}
 		if(document.getElementById("si").checked==false && document.getElementById("no").checked==false ){
 			scelta = false;
@@ -93,7 +90,7 @@ function validateForm(){
 			scelta=true;
 		}
 		if(scelta == false){
-			alert("Per favore seleziona si se possiedi un campo e no altrimenti.");
+			alert("Errore: Per favore seleziona si se possiedi un campo e no altrimenti!");
 			return false;
 		}
 		
