@@ -46,14 +46,15 @@
 	<% String error = (String)request.getAttribute("error"); %>
 
 	<%@include file="jsp/header.jsp"%>	
-	<form name="registrazione" id="containerSuperiore" action="RegistrationController" method="POST" onsubmit="return validateForm()">
+		<div id="containerSuperiore">
 		<div class="top">
 				<h2><center>REGISTRAZIONE</center></h2>
 		</div>
 		<hr style= "margin-left:1%; margin-right:1%">
 		<div class="container">
-			
-			<section>
+			<form name="registrazione" action="RegistrationController" method="POST" onsubmit="return validateForm()">
+			<div style= "margin-left:4%; width:60%; float:left">
+				<br><br>
 				<div class="formelement">
 					<label  class="registra">Nome<span style="color: #FF0000">*</span></label>
 					<input class="campi" type="text" name="nome">
@@ -123,36 +124,36 @@
 					<input type="radio" name="possiedicampisportivi" value="si" id="si">si
 					<input type=radio name="possiedicampisportivi" value="no" id="no">no
 				</div>
-
-	</section>
-			
-	<section>
-			<div class="image-box">
-				<b>Immagine personale</b>
 				<br>
-             	<img src="../images/userStandard.png" id="user" alt="fotoUser">
+				<div style="text-align:center;">
+					<button class="buttonreg" type="submit" name="submit"><b>Registrati</b></button>
+				</div>
+				<br><br>
+	</div>
+	</form>
+	<form>	
+	<div style= "width:35%; float:left;">
+			<div class="image-box">
+				<br><br>
+				<b>Immagine personale</b>
+				<br><br><br>
+             	<img src="<%=request.getContextPath()%>/images/userStandard.png" id="user" alt="fotoUser">
              	<br>
              	<br>
-             	<!--<button type="submit" name="submit">Carica immagine del profilo</button>-->
+             	<button type="submit" name="submit">Carica immagine del profilo</button>
             </div>
-	</section>
-						
-		</div>
+	</div>
+	</form>				
+	</div>
 		
 			
 			<% if(error != null && !error.equals("")) { %>	
 			<p><br><br><br><%=error %>
 			<% } %>	
-			
-			<div style="text-align:center;">
-			<button class="buttonreg" type="submit" name="submit"><b>Registrati</b></button>
-			</div>
-			
-		
 			<div style="text-align: left; padding-left: 0.8%;">
 			I campi con <span style="color: #FF0000">*</span> sono obbligatori
 	   		</div>
-	</form>
+	</div>
 	
 	<script src ="<%=request.getContextPath()%>/js/testRegistrazione.js"></script>
 	<%@include file="jsp/footer.jsp"%>	
