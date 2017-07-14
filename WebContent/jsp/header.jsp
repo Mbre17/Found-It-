@@ -5,14 +5,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 					<!-- Import external css file -->
-	<link href="../style/css/browser.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="../style/css/font-awesome.min.css">
+	<link href="<%=request.getContextPath()%>/style/css/browser.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/style/css/font-awesome.min.css">
 </head>
 <body>
 	<header>
 		<div class="logo">
 			<a href="#">
-				<img alt="logo sito" src="../images/logo.jpg" height="80px" width="180px">
+				<img alt="logo sito" src="<%=request.getContextPath()%>/images/logoFoundIt!.png" height="80px" width="180px">
 			</a>
 		</div>
 		<div class="menu" id="MenuResponsive" >
