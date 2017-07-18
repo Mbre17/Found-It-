@@ -39,7 +39,7 @@
                             <input type="submit" id="login" value="Entra" />
                             <label for="checkbox"><input type="checkbox" id="checkbox" />Ricordami</label>
                         </fieldset>
-                        <span><a href="#">Hai dimenticato la password?</a></span>
+                        <span><a href="<%=request.getContextPath()%>/jsp/recuperoPassword.jsp">Hai dimenticato la password?</a></span>
                     </form>
                 </div>
             </div>
