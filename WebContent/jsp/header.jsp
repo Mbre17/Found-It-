@@ -14,7 +14,7 @@
 <body>
 	<header>
 		<div class="logo">
-			<a href="#">
+			<a href="<%=request.getContextPath()%>/jsp/home.jsp"">
 				<img alt="logo sito" src="<%=request.getContextPath()%>/images/logoFoundIt!.png" height="80px" width="180px">
 			</a>
 		</div>
@@ -23,7 +23,7 @@
 				<ul>
 					<li>
 					<div id="loginContainer">
-                <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+                <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
                 <div style="clear:both"></div>
                 <div id="loginBox">                
                     <form id="loginForm">
