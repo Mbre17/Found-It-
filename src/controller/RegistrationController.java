@@ -1,11 +1,9 @@
 package controller;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,9 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.UtenteModel;
+
 import model.UtenteBean;
+import model.UtenteModel;
+import util.ValidationUtil;
 /**
  * Servlet implementation class RegistrationController
  */
@@ -50,7 +49,7 @@ public class RegistrationController extends HttpServlet {
 		// Copio tutti i parametri di input nelle variabili locali
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
-		String città = request.getParameter("città");
+		String citta = request.getParameter("citta");
 		String provincia = request.getParameter("activityProvince");
 		String cap = request.getParameter("cap");
 		String telefono = request.getParameter("telefono");
@@ -60,9 +59,79 @@ public class RegistrationController extends HttpServlet {
 		String confpassword= request.getParameter("confpassword");
 		String possiediCampiSportivi = request.getParameter("possiedicampisportivi");
 		
+		if( ValidationUtil.isEmpty(nome) || !ValidationUtil.isAValidString(nome,ValidationUtil.REGEX_NOME)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: nome non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(cognome) || !ValidationUtil.isAValidString(cognome,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: cognome non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(citta) || !ValidationUtil.isAValidString(citta,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: citta' non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(provincia) || !ValidationUtil.isAValidString(provincia,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: provincia non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(cap) || !ValidationUtil.isAValidString(cap,ValidationUtil.REGEX_CAP)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: cap non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(telefono) || !ValidationUtil.isAValidString(telefono,ValidationUtil.REGEX_TELEFONO)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: telefono non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(email) || !ValidationUtil.isAValidString(email,ValidationUtil.REGEX_EMAIL)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: email non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		    
+		    //controllare se esiste già questa email associata ad un altro account
+		}
+		 if( ValidationUtil.isEmpty(username) || !ValidationUtil.isAValidString(username,ValidationUtil.REGEX_USERNAME)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: username non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(password) || !ValidationUtil.isAValidString(password,ValidationUtil.REGEX_PASSWORD)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: password non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if(!confpassword.equals(password)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: I campi password e conferma password devono corrispondere!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		 if(possiediCampiSportivi == null){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: Devi dichiarare se possiedi o meno un campo sportivo!');");
+		    out.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    out.println("</script>");
+		}
+		
+		/*
 		utente.setNome(nome);
 		utente.setCognome(cognome);
-		utente.setCittà(città);
+		utente.setcitta(citta);
 		utente.setProvincia(provincia);
 		int CAP = Integer.parseInt(cap);
 		utente.setCap(CAP);
@@ -87,7 +156,7 @@ public class RegistrationController extends HttpServlet {
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
 		rd.forward(request, response);	
-	
+	*/
 	}
 	
 	/**
