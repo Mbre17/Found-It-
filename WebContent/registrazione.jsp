@@ -44,6 +44,8 @@
 </head>
 <body>
 	<% String error = (String)request.getAttribute("error"); %>
+	<% String message = (String)request.getAttribute("message"); %>
+   
 
 	<%@include file="jsp/header.jsp"%>	
 		<div id="containerSuperiore">
@@ -57,19 +59,19 @@
 				<br><br>
 				<div class="formelement">
 					<label  class="registra">Nome<span style="color: #FF0000">*</span></label>
-					<input class="campi" type="text" name="nome">
+					<input class="campi" type="text" name="nome" placeholder="inserisci nome">
                 	<i class="fa fa-user"></i> 
 				</div>
 
 				<div class="formelement">
 					<label  class="registra">Cognome<span style="color: #FF0000">*</span></label>
-				 	<input class="campi" type="text" name="cognome">
+				 	<input class="campi" type="text" name="cognome" placeholder="inserisci cognome">
 				 	<i class="fa fa-user"></i>
 				</div>
 
 				<div class="formelement">
 					<label  class="registra">Citta<span style="color: #FF0000">*</span></label> 
-					<input class="campi" type="text" name="citta">
+					<input id="geocomplete" class="campi" type="text" size="40" name="citta" placeholder="inserisci una posizione"/>
 					<i class="fa fa-map-marker"></i>
 				</div>
 
@@ -102,19 +104,19 @@
 
 				<div class="formelement">
 					<label  class="registra">Username<span style="color: #FF0000">*</span></label>
-				 	<input class="campi" type="text" name="username">
+				 	<input class="campi" type="text" name="username" placeholder="lunghezza minima 3 carateri">
 				 	<i class="fa fa-user"></i> 
 				</div>
 
 				<div class="formelement">
 					<label  class="registra">Password<span style="color: #FF0000">*</span></label>
-				 	<input	class="campi" type="password" name="password">
-				 	<i class="fa fa-lock"></i>	 
+				 	<input	class="campi" type="password" name="password" placeholder="lunghezza minima 8(almeno 1 minuscolo e maiuscolo)">
+				 	<i class="fa fa-lock"></i>	  
 				</div>
 
 				<div class="formelement">
 					<label  class="registra" for="password">Conferma password<span style="color: #FF0000">*</span></label>
-					<input class="campi" type="password" name="confpassword">
+					<input class="campi" type="password" name="confpassword" placeholder="inserisci password">
 				 	<i class="fa fa-lock"></i>
 				</div>
 				<br>
@@ -131,32 +133,66 @@
 				<br><br>
 	</div>
 	</form>
-	<form>	
+	<form  method="post" action="UploadServlet" enctype="multipart/form-data">	
 	<div style= "width:35%; float:left;">
+	
 			<div class="image-box">
-				<br><br>
-				<b>Immagine personale</b>
 				<br><br><br>
-             	<img src="<%=request.getContextPath()%>/images/userStandard.png" id="user" alt="fotoUser">
-             	<br>
-             	<br>
-             	<button type="submit" name="submit">Carica immagine del profilo</button>
+				<label for="exampleInputFile"><b>Immagine personale</b></label>
+				<br><br>
+				 <img id="previewImage" src="<%=request.getContextPath()%>/images/userStandard.png" alt="Your Image" width="200" height="200" />
+			<br><br>
+			<input type="file" onchange="document.getElementById('previewImage').src = window.URL.createObjectURL(this.files[0])" accept="image/*" size="50"/>
+             <br><br>
+             <input type="submit" value="Carica">
+             		<h2>${requestScope.message}</h2>
+             
             </div>
-	</div>
-	</form>				
-	</div>
-		
+           
+             
+             <% if(message != null && !message.equals("")) { %>	
+			<p><%=message %>
+			<% } %>
 			
 			<% if(error != null && !error.equals("")) { %>	
 			<p><br><br><br><%=error %>
 			<% } %>	
+	</div>
+	</form>				
+	</div>
 			<div style="text-align: left; padding-left: 0.8%;">
 			I campi con <span style="color: #FF0000">*</span> sono obbligatori
 	   		</div>
 	</div>
 	
-	<script src ="<%=request.getContextPath()%>/js/testRegistrazione.js"></script>
-	<%@include file="jsp/footer.jsp"%>	
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/ImageUploader.js"></script>
+	<script type="text/javascript" src ="<%=request.getContextPath()%>/js/testRegistrazione.js"></script>
+	<%@include file="jsp/footer.jsp"%>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCofJoxoB2qURli3Js_1iUFjixonLuqk-M&sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="<%=request.getContextPath()%>/js/jquery.geocomplete.js"></script>
+    <script src="<%=request.getContextPath()%>/js/logger.js"></script>
+	
+	<script>
+      $(function(){
+        
+        $("#geocomplete").geocomplete()
+          .bind("geocode:result", function(event, result){
+            $.log("Result: " + result.formatted_address);
+          })
+          .bind("geocode:error", function(event, status){
+            $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
+        
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });        
+      });
+    </script>	
 	
 </body>
 </html>
