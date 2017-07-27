@@ -20,18 +20,20 @@ public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String UPLOAD_DIRECTORY = "upload";
-	private static final int THRESHOLD_SIZE 	= 1024 * 1024 * 20; 	// 20MB
+	private static final int THRESHOLD_SIZE 	= 1024 * 1024 * 30; 	// 30MB
 	private static final int MAX_FILE_SIZE 		= 1024 * 1024 * 40; // 40MB
 	private static final int MAX_REQUEST_SIZE 	= 1024 * 1024 * 50; // 50MB
 
+	
 	/**
 	 * handles file upload via HTTP POST method
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// checks if the request actually contains upload file
+		PrintWriter writer = response.getWriter();
+
 		if (!ServletFileUpload.isMultipartContent(request)) {
-			PrintWriter writer = response.getWriter();
 			writer.println("Request does not contain upload data");
 			writer.flush();
 			return;
@@ -73,10 +75,18 @@ public class UploadServlet extends HttpServlet {
 					item.write(storeFile);
 				}
 			}
-			request.setAttribute("message", "Upload has been done successfully!");
+			//request.setAttribute("message", "Upload has been done successfully!");
+			writer.println("<script type=\"text/javascript\">");
+		    writer.println("alert('Upload has been done successfully!');");
+		    writer.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    writer.println("</script>");
 		} catch (Exception ex) {
-			request.setAttribute("message", "There was an error: " + ex.getMessage());
+			//request.setAttribute("message", "There was an error: " + ex.getMessage());
+			writer.println("<script type=\"text/javascript\">");
+		    writer.println("alert('error');");
+		    writer.println("location='"+request.getContextPath()+"/registrazione.jsp';");
+		    writer.println("</script>");
 		}
-		getServletContext().getRequestDispatcher("/registrazione.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher("/registrazione.jsp").forward(request, response);
 	}
 }
