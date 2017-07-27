@@ -71,7 +71,7 @@
 
 				<div class="formelement">
 					<label  class="registra">Citta<span style="color: #FF0000">*</span></label> 
-					<input id="geocomplete" class="campi" type="text" size="40" name="citta" placeholder="inserisci una posizione"/>
+					<input class="campi" type="text" size="40" name="citta" placeholder="inserisci una citta"/>
 					<i class="fa fa-map-marker"></i>
 				</div>
 
@@ -137,6 +137,8 @@
 	<div style= "width:35%; float:left;">
 	
 			<div class="image-box">
+			             		<!--<h2>${requestScope.message}</h2>-->
+			  
 				<br><br><br>
 				<label for="exampleInputFile"><b>Immagine personale</b></label>
 				<br><br>
@@ -145,18 +147,9 @@
 			<input type="file" onchange="document.getElementById('previewImage').src = window.URL.createObjectURL(this.files[0])" accept="image/*" size="50"/>
              <br><br>
              <input type="submit" value="Carica">
-             		<h2>${requestScope.message}</h2>
              
             </div>
            
-             
-             <% if(message != null && !message.equals("")) { %>	
-			<p><%=message %>
-			<% } %>
-			
-			<% if(error != null && !error.equals("")) { %>	
-			<p><br><br><br><%=error %>
-			<% } %>	
 	</div>
 	</form>				
 	</div>
@@ -172,27 +165,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
     <script src="<%=request.getContextPath()%>/js/jquery.geocomplete.js"></script>
-    <script src="<%=request.getContextPath()%>/js/logger.js"></script>
-	
-	<script>
-      $(function(){
-        
-        $("#geocomplete").geocomplete()
-          .bind("geocode:result", function(event, result){
-            $.log("Result: " + result.formatted_address);
-          })
-          .bind("geocode:error", function(event, status){
-            $.log("ERROR: " + status);
-          })
-          .bind("geocode:multiple", function(event, results){
-            $.log("Multiple: " + results.length + " results found");
-          });
-        
-        $("#find").click(function(){
-          $("#geocomplete").trigger("geocode");
-        });        
-      });
-    </script>	
+    <script src="<%=request.getContextPath()%>/js/logger.js"></script>	
 	
 </body>
 </html>
