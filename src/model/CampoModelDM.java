@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class CampoModel1DM {
+public class CampoModelDM {
 	private static final String TABLE_NAME = "Campo sportivo";
 
 	public synchronized void doSave(CampoBean campo) throws SQLException {
@@ -15,7 +15,7 @@ public class CampoModel1DM {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO " + CampoModel1DM.TABLE_NAME
+		String insertSQL = "INSERT INTO " + CampoModelDM.TABLE_NAME
 				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO,USERNAMEPROPRIETARIO,OFFERTAAPPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -50,7 +50,7 @@ public class CampoModel1DM {
 
 		CampoBean campo = new CampoBean();
 
-		String selectSQL = "SELECT * FROM " + CampoModel1DM.TABLE_NAME+ " WHERE USERNAME = ?";
+		String selectSQL = "SELECT * FROM " + CampoModelDM.TABLE_NAME+ " WHERE USERNAME = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -86,7 +86,7 @@ public class CampoModel1DM {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + CampoModel1DM.TABLE_NAME + " WHERE NOME = ?";
+		String deleteSQL = "DELETE FROM " + CampoModelDM.TABLE_NAME + " WHERE NOME = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -112,7 +112,7 @@ public class CampoModel1DM {
 
 		Collection<CampoBean> campi = new LinkedList<CampoBean>();
 
-		String selectSQL = "SELECT * FROM " + CampoModel1DM.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + CampoModelDM.TABLE_NAME;
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -154,7 +154,7 @@ public class CampoModel1DM {
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		
-		String updateSQL = "UPDATE" + CampoModel1DM.TABLE_NAME
+		String updateSQL = "UPDATE" + CampoModelDM.TABLE_NAME
 				+ "SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?, USERNAMEPROPRIETARIO= ?, OFFERTAAPPLICATA= ?"
 				+ " WHERE NOME = ?";
 
