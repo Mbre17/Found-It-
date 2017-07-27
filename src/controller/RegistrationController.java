@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.UtenteBean;
 import model.UtenteModel;
+import model.UtenteModelDM;
 import util.ValidationUtil;
 /**
  * Servlet implementation class RegistrationController
@@ -23,7 +24,7 @@ import util.ValidationUtil;
 
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static  UtenteModel model;
+	static  UtenteModel model = new UtenteModelDM();
 
     public RegistrationController() {
         super();
@@ -128,22 +129,24 @@ public class RegistrationController extends HttpServlet {
 		    out.println("</script>");
 		}
 		
-		/*
+		
 		utente.setNome(nome);
 		utente.setCognome(cognome);
 		utente.setcitta(citta);
 		utente.setProvincia(provincia);
-		int CAP = Integer.parseInt(cap);
-		utente.setCap(CAP);
-		//int TELEFONO = Integer.parseInt(telefono);
-		//utente.setTelefono(TELEFONO);
+		utente.setCap(Integer.parseInt(cap));
+		utente.setTelefono(Integer.parseInt(telefono));
 		utente.setEmail(email);
 		utente.setUsername(username);
-		//utente.setPassword(password);
-		//utente.setConfpassword(confpassword);
-		utente.setPossiediCampiSportivi(possiediCampiSportivi);
-			
-		//String cryptedPassword = toSHA1(password.getBytes());
+		String cryptedPassword = toSHA1(password.getBytes());
+		utente.setPassword(cryptedPassword);
+		if(possiediCampiSportivi == "no"){
+			utente.setTipo("utente");
+		}
+		else{
+			utente.setTipo("partner sportivo");
+		}
+		
 		try{
 		
 			model.doSave(utente);
@@ -156,7 +159,7 @@ public class RegistrationController extends HttpServlet {
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
 		rd.forward(request, response);	
-	*/
+	
 	}
 	
 	/**

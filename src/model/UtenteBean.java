@@ -4,36 +4,42 @@ public class UtenteBean {
 
 	private String nome;
 	private String cognome;
-	private String città;
+	private String citta;
 	private String provincia;
 	private int cap;
 	private int telefono;
 	private String email;
 	private String username;
 	private String password;
-	private String confpassword;
-	private String possiediCampiSportivi;
+	private String tipo;
 	
 	public UtenteBean() {
 		this.nome = null;
 		this.cognome = null;
-		this.città = null;
+		this.citta = null;
 		this.provincia = null;
 		this.cap = 0;
 		this.telefono = 0;
 		this.email = null;
 		this.username = null;
 		this.password = null;
-		this.confpassword = null;
-		this.possiediCampiSportivi = null;
+		this.tipo = null;
 	}
 
 	@Override
 	public String toString() {
-		return "Utente [nome=" + nome + ", cognome=" + cognome + ", città=" + città + ", provincia=" + provincia
+		return "UtenteBean [nome=" + nome + ", cognome=" + cognome + ", citta=" + citta + ", provincia=" + provincia
 				+ ", cap=" + cap + ", telefono=" + telefono + ", email=" + email + ", username=" + username
-				+ ", password=" + password + ", confpassword=" + confpassword + ", possiediCampiSportivi="
-				+ possiediCampiSportivi + "]";
+				+ ", password=" + password + ", tipo=" + tipo + "]";
+	}
+
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getNome() {
@@ -52,12 +58,12 @@ public class UtenteBean {
 		this.cognome = cognome;
 	}
 
-	public String getCittà() {
-		return città;
+	public String getcitta() {
+		return citta;
 	}
 
-	public void setCittà(String città) {
-		this.città = città;
+	public void setcitta(String citta) {
+		this.citta = citta;
 	}
 
 	public String getProvincia() {
@@ -108,19 +114,4 @@ public class UtenteBean {
 		this.password = password;
 	}
 
-	public String getConfpassword() {
-		return confpassword;
-	}
-
-	public void setConfpassword(String confpassword) {
-		this.confpassword = confpassword;
-	}
-
-	public String getPossiediCampiSportivi() {
-		return possiediCampiSportivi;
-	}
-
-	public void setPossiediCampiSportivi(String possiediCampiSportivi) {
-		this.possiediCampiSportivi = possiediCampiSportivi;
-	}
 }

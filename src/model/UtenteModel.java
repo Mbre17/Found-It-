@@ -13,5 +13,5 @@ public interface UtenteModel
 	
 	public boolean doUpdate(UtenteBean utenteToUpdate) throws SQLException;
 	
-	public Collection<UtenteBean> doRetriveAll(String order) throws SQLException;
+	public Collection<UtenteBean> doRetrieveAll(String order) throws SQLException;
 }
