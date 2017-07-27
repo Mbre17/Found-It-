@@ -16,7 +16,7 @@ public class CampoModel1DM {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + CampoModel1DM.TABLE_NAME
-				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO,USERNAMEPROPRIETARIO,OFFERTAAPPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -26,6 +26,8 @@ public class CampoModel1DM {
 			preparedStatement.setString(3, campo.getLuogo());
 			preparedStatement.setString(4, campo.getTipo());
 			preparedStatement.setFloat(5, campo.getPrezzo());
+			preparedStatement.setString(6, campo.getUsernameProprietario());
+			preparedStatement.setInt(7, campo.getOffertaApplicata());
 
 
 
@@ -63,6 +65,8 @@ public class CampoModel1DM {
 				campo.setLuogo(rs.getString("LUOGO"));
 				campo.setTipo(rs.getString("TIPO"));
 				campo.setPrezzo(rs.getFloat("PREZZO"));
+				campo.setUsernameProprietario(rs.getString("USERNAMEPROPRIETARIO"));
+				campo.setOffertaApplicata(rs.getInt("OFFERTAAPPLICATA"));
 			}
 
 		} finally {
@@ -128,6 +132,8 @@ public class CampoModel1DM {
 				campo.setLuogo(rs.getString("LUOGO"));
 				campo.setTipo(rs.getString("TIPO"));
 				campo.setPrezzo(rs.getFloat("PREZZO"));
+				campo.setUsernameProprietario(rs.getString("USERNAMEPROPRIETARIO"));
+				campo.setOffertaApplicata(rs.getInt("OFFERTAAPPLICATA"));
 
 				campi.add(campo);
 			}
@@ -149,7 +155,7 @@ public class CampoModel1DM {
 		int result = 0;
 		
 		String updateSQL = "UPDATE" + CampoModel1DM.TABLE_NAME
-				+ "SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?"
+				+ "SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?, USERNAMEPROPRIETARIO= ?, OFFERTAAPPLICATA= ?"
 				+ " WHERE NOME = ?";
 
 		try {
@@ -160,6 +166,8 @@ public class CampoModel1DM {
 			preparedStatement.setString(3, campo.getLuogo());
 			preparedStatement.setString(4, campo.getTipo());
 			preparedStatement.setFloat(5, campo.getPrezzo());
+			preparedStatement.setString(6, campo.getUsernameProprietario());
+			preparedStatement.setInt(7, campo.getOffertaApplicata());
 
 			result = preparedStatement.executeUpdate();
 

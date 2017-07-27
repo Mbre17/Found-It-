@@ -6,6 +6,8 @@ public class CampoBean {
 	private String luogo;
 	private String tipo;
 	private float prezzo;
+	private String usernameProprietario;
+	private int offertaApplicata;
 	
 	public CampoBean(){
 		this.nome= null;
@@ -13,6 +15,8 @@ public class CampoBean {
 		this.luogo= null;
 		this.tipo= null;
 		this.prezzo= 0;
+		this.usernameProprietario= null;
+		this.offertaApplicata= 0;
 	}
 
 	public String getNome() {
@@ -55,10 +59,28 @@ public class CampoBean {
 		this.prezzo = prezzo;
 	}
 
+	public String getUsernameProprietario() {
+		return usernameProprietario;
+	}
+
+	public void setUsernameProprietario(String usernameProprietario) {
+		this.usernameProprietario = usernameProprietario;
+	}
+
+	public int getOffertaApplicata() {
+		return offertaApplicata;
+	}
+
+	public void setOffertaApplicata(int offertaApplicata) {
+		this.offertaApplicata = offertaApplicata;
+	}
+
 	@Override
 	public String toString() {
 		return "CampoBean [nome=" + nome + ", fasciaOraria=" + fasciaOraria + ", luogo=" + luogo + ", tipo=" + tipo
-				+ ", prezzo=" + prezzo + "]";
+				+ ", prezzo=" + prezzo + ", usernameProprietario=" + usernameProprietario + ", offertaApplicata="
+				+ offertaApplicata + "]";
 	}
+
 	
 }
