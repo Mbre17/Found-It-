@@ -32,7 +32,7 @@ public class UtenteModelDM implements UtenteModel {
 			preparedStatement.setString(5, utente.getcitta());
 			preparedStatement.setString(6, utente.getProvincia());
 			preparedStatement.setInt(7, utente.getCap());
-			preparedStatement.setInt(8, utente.getTelefono());
+			preparedStatement.setString(8, utente.getTelefono());
 			preparedStatement.setString(9, utente.getTipo());
 			preparedStatement.setString(10, utente.getEmail());
 
@@ -75,7 +75,7 @@ public class UtenteModelDM implements UtenteModel {
 				utente.setcitta(rs.getString("CITTA"));
 				utente.setProvincia(rs.getString("PROVINCIA"));
 				utente.setCap(rs.getInt("CAP"));
-				utente.setTelefono(rs.getInt("TEL"));
+				utente.setTelefono(rs.getString("TEL"));
 				utente.setTipo(rs.getString("TIPO"));
 				utente.setEmail(rs.getString("EMAIL"));
 			}
@@ -147,7 +147,7 @@ public class UtenteModelDM implements UtenteModel {
 				utente.setcitta(rs.getString("CITTA"));
 				utente.setProvincia(rs.getString("PROVINCIA"));
 				utente.setCap(rs.getInt("CAP"));
-				utente.setTelefono(rs.getInt("TEL"));
+				utente.setTelefono(rs.getString("TEL"));
 				utente.setTipo(rs.getString("TIPO"));
 				utente.setEmail(rs.getString("EMAIL"));
 
@@ -185,7 +185,7 @@ public class UtenteModelDM implements UtenteModel {
 			preparedStatement.setString(5, utenteToUpdate.getcitta());
 			preparedStatement.setString(6, utenteToUpdate.getProvincia());
 			preparedStatement.setInt(7, utenteToUpdate.getCap());
-			preparedStatement.setInt(8, utenteToUpdate.getTelefono());
+			preparedStatement.setString(8, utenteToUpdate.getTelefono());
 			preparedStatement.setString(9, utenteToUpdate.getTipo());
 			preparedStatement.setString(10, utenteToUpdate.getEmail());
 			preparedStatement.setString(11, utenteToUpdate.getUsername());

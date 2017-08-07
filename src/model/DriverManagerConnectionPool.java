@@ -28,7 +28,7 @@ public class DriverManagerConnectionPool
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
-		String db = "Found It!";
+		String db = "found it!";
 		String username = "root";
 		String password = "admin";
 

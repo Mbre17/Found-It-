@@ -13,6 +13,8 @@ public class PrenotazioneBean {
 	public PrenotazioneBean(){
 		this.idUtente= null;
 		this.nomeCampoSportivo= null;
+		this.data=null;
+		this.ora=null;
 	}
 
 	public Date getData() {

@@ -135,15 +135,15 @@ public class RegistrationController extends HttpServlet {
 		utente.setcitta(citta);
 		utente.setProvincia(provincia);
 		utente.setCap(Integer.parseInt(cap));
-		utente.setTelefono(Integer.parseInt(telefono));
+		utente.setTelefono(telefono);
 		utente.setEmail(email);
 		utente.setUsername(username);
 		String cryptedPassword = toSHA1(password.getBytes());
 		utente.setPassword(cryptedPassword);
-		if(possiediCampiSportivi == "no"){
+		if(possiediCampiSportivi.equals("no")){
 			utente.setTipo("utente");
 		}
-		else{
+		else if(possiediCampiSportivi.equals("si")){
 			utente.setTipo("partner sportivo");
 		}
 		

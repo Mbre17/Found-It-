@@ -7,7 +7,7 @@ public class UtenteBean {
 	private String citta;
 	private String provincia;
 	private int cap;
-	private int telefono;
+	private String telefono;
 	private String email;
 	private String username;
 	private String password;
@@ -19,7 +19,7 @@ public class UtenteBean {
 		this.citta = null;
 		this.provincia = null;
 		this.cap = 0;
-		this.telefono = 0;
+		this.telefono = null;
 		this.email = null;
 		this.username = null;
 		this.password = null;
@@ -82,11 +82,11 @@ public class UtenteBean {
 		this.cap = cap;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
