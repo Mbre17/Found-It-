@@ -26,7 +26,7 @@
                 <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
                 <div style="clear:both"></div>
                 <div id="loginBox">                
-                    <form id="loginForm">
+                    <form id="loginForm" action="../LoginController">
                         <fieldset id="body">
                             <fieldset>
                                 <label for="email">Username</label>
