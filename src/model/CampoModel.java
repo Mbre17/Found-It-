@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public interface CampoModel {
-public void doSave(CampoBean campoToSave) throws SQLException;
+	
+	public void doSave(CampoBean campoToSave) throws SQLException;
 	
 	public boolean doDelete(String aNome) throws SQLException;
 	

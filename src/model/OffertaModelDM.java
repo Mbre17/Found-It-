@@ -13,7 +13,7 @@ public class OffertaModelDM {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + OffertaModelDM.TABLE_NAME
-				+ " (IDOFFERTA,USERNAMEUTENTE,PERIODODIVALIDITA,PERCENTUALESCONTO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (ID OFFERTA,USERNAME UTENTE,PERIODO DI VALIDITA,PERCENTUALE SCONTO) VALUES (?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -36,7 +36,7 @@ public class OffertaModelDM {
 			}
 		}
 	}
-	public synchronized boolean doDelete(String aOfferta) throws SQLException {
+	public synchronized boolean doDelete(int idOfferta) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -47,7 +47,7 @@ public class OffertaModelDM {
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, aOfferta);
+			preparedStatement.setInt(1, idOfferta);
 
 			result = preparedStatement.executeUpdate();
 

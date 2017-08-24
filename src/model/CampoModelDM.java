@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class CampoModelDM {
-	private static final String TABLE_NAME = "Campo sportivo";
+	private static final String TABLE_NAME = "campo sportivo";
 
 	public synchronized void doSave(CampoBean campo) throws SQLException {
 
@@ -16,7 +16,7 @@ public class CampoModelDM {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + CampoModelDM.TABLE_NAME
-				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO,USERNAMEPROPRIETARIO,OFFERTAAPPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO,USERNAMEPROPRIETARIO,OFFERTAAPPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -50,7 +50,7 @@ public class CampoModelDM {
 
 		CampoBean campo = new CampoBean();
 
-		String selectSQL = "SELECT * FROM " + CampoModelDM.TABLE_NAME+ " WHERE USERNAME = ?";
+		String selectSQL = "SELECT * FROM " + CampoModelDM.TABLE_NAME+ " WHERE NOME = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -168,6 +168,7 @@ public class CampoModelDM {
 			preparedStatement.setFloat(5, campo.getPrezzo());
 			preparedStatement.setString(6, campo.getUsernameProprietario());
 			preparedStatement.setInt(7, campo.getOffertaApplicata());
+			preparedStatement.setString(8, campo.getNome());
 
 			result = preparedStatement.executeUpdate();
 

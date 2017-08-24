@@ -6,5 +6,5 @@ public interface OffertaModel {
 	
 public void doSave(OffertaBean offertaToSave) throws SQLException;
 	
-	public boolean doDelete(String aOfferta) throws SQLException;
+	public boolean doDelete(int idOfferta) throws SQLException;
 }
