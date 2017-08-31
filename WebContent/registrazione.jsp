@@ -54,7 +54,7 @@
 		</div>
 		<hr style= "margin-left:1%; margin-right:1%">
 		<div class="container">
-			<form name="registrazione" action="RegistrationController" method="POST" onsubmit="return validateForm()">
+			<form name="registrazione" action="<%=request.getContextPath()%>/RegistrationController" method="POST" onsubmit="return validateForm()">
 			<div style= "margin-left:4%; width:60%; float:left">
 				<br><br>
 				<div class="formelement">
