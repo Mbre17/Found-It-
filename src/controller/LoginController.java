@@ -53,33 +53,44 @@ public class LoginController extends HttpServlet {
 			String username= request.getParameter("username");
 			String password= request.getParameter("password");
 			String cryptedPassword = toSHA1(password.getBytes());
+			System.out.println("Sei in Login Register, Username:"+username+", Password:"+password);
 			
 			try {
 				UtenteBean utente= model.doRetrieveByKey(username);
-				if(utente == null){
+				ServletContext sc = getServletContext();
+				RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
+				
+				System.out.println("Conversione utente, utente="+utente);
+				
+				if(utente == null || utente.getUsername() == null ){
+					System.out.println("utente inesistente!");
+					String message = "test messaggio di errore!";
+					request.setAttribute("message", message);
+					rd.forward(request, response);
+				}
+				else if(utente.getPassword().equals(cryptedPassword)){
+					System.out.println("password corretta!");
+					HttpSession session = request.getSession(true);
+					session.setAttribute("login",utente);
+					out.println("<script type=\"text/javascript\">");
+				    out.println("alert('Benvenuto '+ utente.getNome());");
+				    out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
+				    out.println("</script>");
+				
+				}
+				else{
+					System.out.println("password errata!");
 					out.println("<script type=\"text/javascript\">");
 				    out.println("alert('Errore: utente non valido!');");
 				    out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
 				    out.println("</script>");
 				}
-				else if(utente.getPassword().equals(cryptedPassword)){
-					HttpSession session = request.getSession();
-					session.setAttribute("login",utente);
-					ServletContext sc = getServletContext();
-					RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
-					rd.forward(request, response);	
-					out.println("<script type=\"text/javascript\">");
-				    out.println("alert('Benvenuto '+ utente.getNome());");
-				    out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
-				    out.println("</script>");
-
-
-				}
+			rd.forward(request, response);	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	}
+}
 	
 	
 	/**
