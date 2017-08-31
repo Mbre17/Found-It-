@@ -47,9 +47,8 @@
 			<div align="center" id="Dati Personali" class="tabcontent">
 			<h2>Dati Profilo</h2>
   				<div class="allineasinistra">
+  				<form name="dati personali" action="<%=request.getContextPath()%>/ProfiloController" method="POST">
         			<section style="width: 50%;">
-        				
-        				
         				<div class="displayTab">
 							<label class="registra">Nome</label>						
 							<input id="nome" type="text" name="nome"> 
@@ -82,10 +81,11 @@
 							<label class="registra">Telefono</label>
 							<input id="telefono" type="text" name="telefono">
 	 					</div>
-					</section>		
+					</section>	
 					<br><br>
 					<button type="submit" id="cambiaDatiProfilo" name="cambiaDatiPersonali">Cambia</button>
 					<br><br><br>	
+					</form>	
         		</div>    		
 			</div>
 
