@@ -64,7 +64,7 @@ public class LoginController extends HttpServlet {
 				
 				if(utente == null || utente.getUsername() == null ){
 					System.out.println("utente inesistente!");
-					String message = "test messaggio di errore!";
+					String message = "Username errato oppure inesistente!";
 					request.setAttribute("message", message);
 					rd.forward(request, response);
 				}
@@ -72,20 +72,16 @@ public class LoginController extends HttpServlet {
 					System.out.println("password corretta!");
 					HttpSession session = request.getSession(true);
 					session.setAttribute("login",utente);
-					out.println("<script type=\"text/javascript\">");
-				    out.println("alert('Benvenuto '+ utente.getNome());");
-				    out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
-				    out.println("</script>");
-				
+					String message = "Ehy "+utente.getUsername()+", Benvenuto in Found It!";
+					request.setAttribute("message", message);
+					rd.forward(request, response);
 				}
 				else{
 					System.out.println("password errata!");
-					out.println("<script type=\"text/javascript\">");
-				    out.println("alert('Errore: utente non valido!');");
-				    out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
-				    out.println("</script>");
+					String message = "Password errata!";
+					request.setAttribute("message", message);
+					rd.forward(request, response);
 				}
-			rd.forward(request, response);	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

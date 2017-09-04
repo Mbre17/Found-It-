@@ -11,7 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
     <script src="<%=request.getContextPath()%>/js/login.js"></script></head>
 </head>
-<body>
+<body onload="showMessage()">
 	<header>
 		<div class="logo">
 			<a href="<%=request.getContextPath()%>/jsp/home.jsp"">
@@ -26,7 +26,7 @@
                 <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
                 <div style="clear:both"></div>
                 <div id="loginBox">                
-                    <form id="loginForm" action="../LoginController">
+                    <form id="loginForm" action="../LoginController" method="post">
                         <fieldset id="body">
                             <fieldset>
                                 <label for="email">Username</label>
@@ -52,6 +52,16 @@
 	</header>
 	
 	<script>
+		function showMessage() {
+	    // Get the snackbar DIV
+	    	var x = document.getElementById("snackbar")
+
+	    // Add the "show" class to DIV
+	    	x.className = "show";
+
+	    // After 3 seconds, remove the show class from DIV
+	    	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+		}
 		function responsiveFunction(){
     		var x = document.getElementById("MenuResponsive");
     		if (x.className === "menu") {
@@ -61,5 +71,6 @@
     		}
 		}
 	</script>
+	<div id="snackbar"><%= request.getAttribute("message")%></div>	
 </body>
 </html>
