@@ -12,14 +12,14 @@
 	<title>Found It! | Profilo Utente</title>
 		
 	<!--Css document  -->		
-	<link rel="stylesheet" href="../style/css/browser.css" type="text/css" />
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/style/css/browser.css" type="text/css" />
 	<style type="text/css">
 		div.displayTab label.registra {
 			min-width: 100px;
 		}
 	</style>
 </head>
-<body>
+<body onload="<%=request.getContextPath()%>/ProfiloController">
 	<%@include file="header.jsp"%>	
 	<div id="containerSuperiore">
 		<div class="top">
@@ -51,17 +51,17 @@
         			<section style="width: 50%;">
         				<div class="displayTab">
 							<label class="registra">Nome</label>						
-							<input id="nome" type="text" name="nome"> 
+							<input id="nome" type="text" name="nome" value="<%= request.getAttribute("nome") %>"> 
 						</div>
 						
 						<div class="displayTab">
 							<label class="registra">Cognome</label>	
-							<input id="cogname" type="text" name="cognome">
+							<input id="cogname" type="text" name="cognome" value="<%= request.getAttribute("cognome") %>">
 						</div>
 			
 						<div class="displayTab"> 
 							<label class="registra">Città</label>
-							<input id="città" type="text" name="città">
+							<input id="città" type="text" name="città" value="<%= request.getAttribute("citta") %>">
 						</div>
 					</section>
 							
@@ -69,17 +69,17 @@
 												 
 						<div class="displayTab">	
 							<label class="registra">Provincia</label>
-							<input  id="provincia" type="text" name="provincia">
+							<input  id="provincia" type="text" name="provincia" value="<%= request.getAttribute("activityProvince") %>">
 						</div>
 											
 						<div class="displayTab">
 							<label  class="registra">Cap</label>
-							<input id="cap" type="text" name="cap">
+							<input id="cap" type="text" name="cap" value="<%= request.getAttribute("cap") %>">
 						</div>
 											
 						<div class="displayTab">
 							<label class="registra">Telefono</label>
-							<input id="telefono" type="text" name="telefono">
+							<input id="telefono" type="text" name="telefono" value="<%= request.getAttribute("telefono") %>">
 	 					</div>
 					</section>	
 					<br><br>
@@ -94,18 +94,18 @@
   				
   				<div style="width: 50%; margin-left: auto; margin-right: auto;">
   					<div class="displayTab">
-						<label  class="registra">Usurname</label>
-				 		<input id="usurname" type="text" name="usurname"> 
+						<label  class="registra">Username</label>
+				 		<input id="username" type="text" name="username" value="<%= request.getAttribute("username") %>"> 
 					</div>
 				
 					<div class="displayTab">
 						<label  class="registra">Password</label>
-				 		<input	id="password" type="password" name="password">	 
+				 		<input	id="password" type="password" name="password" value="<%= request.getAttribute("password") %>">	 
 					</div>
 				
 					<div class="displayTab">
 						<label  class="registra">Email<span style="color: #FF0000">*</span></label>
-				 		<input id="email" type="email" name="email">				 
+				 		<input id="email" type="email" name="email" value="<%= request.getAttribute("email") %>">				 
    					</div>
    					<br><br>
 					<button style="width:40%; margin-left:20%;" type="submit" id="cambiaDatiProfilo" name="cambiaDatiProfilo">Cambia</button>

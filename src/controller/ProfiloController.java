@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +55,9 @@ public class ProfiloController extends HttpServlet {
 		request.setAttribute("activityProvince", utente.getProvincia());
 		request.setAttribute("cap", utente.getCap());
 		request.setAttribute("telefono", utente.getTelefono());
+		request.setAttribute("username", utente.getUsername());
+		request.setAttribute("password", utente.getPassword());
+		request.setAttribute("email", utente.getEmail());
 		
 		/*
 		String nome= request.getParameter("nome");
@@ -84,8 +89,10 @@ public class ProfiloController extends HttpServlet {
 				out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
 				out.println("</script>");
 			}
-			model.doUpdate(utente);
-			
+		//	model.doUpdate(utente);
+			ServletContext sc = getServletContext();
+			RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
+			rd.forward(request, response);
 		} 
 		catch(Exception e) 
 		{
