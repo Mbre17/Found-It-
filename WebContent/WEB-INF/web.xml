@@ -19,4 +19,20 @@
     <servlet-name>RegistrationController</servlet-name>
     <url-pattern>/registration</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ProfiloController</servlet-name>
+    <servlet-class>controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfiloController</servlet-name>
+    <url-pattern>/profiloController</url-pattern>
+  </servlet-mapping>
 </web-app>
