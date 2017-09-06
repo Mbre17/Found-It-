@@ -19,8 +19,17 @@
 		}
 	</style>
 </head>
-<body onload="<%=request.getContextPath()%>/ProfiloController">
+<body>
 	<%@include file="header.jsp"%>	
+	<%if(utente == null || utente.getUsername() == null){
+		    ServletContext sc = getServletContext();
+			RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
+			String message = "Effettuare il login prima di accedere al profilo utente!";
+			request.setAttribute("message", message);
+			rd.forward(request, response);		   
+	   };
+	%>
+	
 	<div id="containerSuperiore">
 		<div class="top">
 			<h2><center>PROFILO UTENTE</center></h2>
@@ -51,17 +60,17 @@
         			<section style="width: 50%;">
         				<div class="displayTab">
 							<label class="registra">Nome</label>						
-							<input id="nome" type="text" name="nome" value="<%= request.getAttribute("nome") %>"> 
+							<input id="nome" type="text" name="nome" value="<%= utente.getNome() %>"> 
 						</div>
 						
 						<div class="displayTab">
 							<label class="registra">Cognome</label>	
-							<input id="cogname" type="text" name="cognome" value="<%= request.getAttribute("cognome") %>">
+							<input id="cogname" type="text" name="cognome" value="<%= utente.getCognome() %>">
 						</div>
 			
 						<div class="displayTab"> 
 							<label class="registra">Città</label>
-							<input id="città" type="text" name="città" value="<%= request.getAttribute("citta") %>">
+							<input id="città" type="text" name="città" value="<%= utente.getcitta() %>">
 						</div>
 					</section>
 							
@@ -69,17 +78,17 @@
 												 
 						<div class="displayTab">	
 							<label class="registra">Provincia</label>
-							<input  id="provincia" type="text" name="provincia" value="<%= request.getAttribute("activityProvince") %>">
+							<input  id="provincia" type="text" name="provincia" value="<%= utente.getProvincia() %>">
 						</div>
 											
 						<div class="displayTab">
 							<label  class="registra">Cap</label>
-							<input id="cap" type="text" name="cap" value="<%= request.getAttribute("cap") %>">
+							<input id="cap" type="text" name="cap" value="<%= utente.getCap() %>">
 						</div>
 											
 						<div class="displayTab">
 							<label class="registra">Telefono</label>
-							<input id="telefono" type="text" name="telefono" value="<%= request.getAttribute("telefono") %>">
+							<input id="telefono" type="text" name="telefono" value="<%= utente.getTelefono() %>">
 	 					</div>
 					</section>	
 					<br><br>
@@ -95,17 +104,17 @@
   				<div style="width: 50%; margin-left: auto; margin-right: auto;">
   					<div class="displayTab">
 						<label  class="registra">Username</label>
-				 		<input id="username" type="text" name="username" value="<%= request.getAttribute("username") %>"> 
+				 		<input id="username" type="text" name="username" readonly="readonly" value="<%= utente.getUsername() %>"> 
 					</div>
 				
 					<div class="displayTab">
 						<label  class="registra">Password</label>
-				 		<input	id="password" type="password" name="password" value="<%= request.getAttribute("password") %>">	 
+				 		<input	id="password" type="password" name="password" value="<%= utente.getPassword() %>">	 
 					</div>
 				
 					<div class="displayTab">
 						<label  class="registra">Email<span style="color: #FF0000">*</span></label>
-				 		<input id="email" type="email" name="email" value="<%= request.getAttribute("email") %>">				 
+				 		<input id="email" type="email" name="email" value="<%= utente.getEmail() %>">				 
    					</div>
    					<br><br>
 					<button style="width:40%; margin-left:20%;" type="submit" id="cambiaDatiProfilo" name="cambiaDatiProfilo">Cambia</button>

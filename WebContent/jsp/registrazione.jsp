@@ -47,7 +47,7 @@
 	<% String message = (String)request.getAttribute("message"); %>
    
 
-	<%@include file="jsp/header.jsp"%>	
+	<%@include file="header.jsp"%>	
 		<div id="containerSuperiore">
 		<div class="top">
 				<h2><center>REGISTRAZIONE</center></h2>
@@ -79,7 +79,7 @@
 					<label  class="registra">Provincia<span style="color: #FF0000">*</span></label> 
 						<select
 								class="campi" name="activityProvince">
-								<%@include file="jsp/province.jsp" %>
+								<%@include file="province.jsp" %>
 						</select>
 					<i class="fa fa-map-marker"></i>
 				</div>
@@ -160,7 +160,7 @@
 	
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/ImageUploader.js"></script>
 	<script type="text/javascript" src ="<%=request.getContextPath()%>/js/testRegistrazione.js"></script>
-	<%@include file="jsp/footer.jsp"%>
+	<%@include file="footer.jsp"%>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCofJoxoB2qURli3Js_1iUFjixonLuqk-M&sensor=false&amp;libraries=places"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 

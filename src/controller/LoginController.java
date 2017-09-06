@@ -53,23 +53,19 @@ public class LoginController extends HttpServlet {
 			String username= request.getParameter("username");
 			String password= request.getParameter("password");
 			String cryptedPassword = toSHA1(password.getBytes());
-			System.out.println("Sei in Login Register, Username:"+username+", Password:"+password);
 			
 			try {
 				UtenteBean utente= model.doRetrieveByKey(username);
 				ServletContext sc = getServletContext();
 				RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
 				
-				System.out.println("Conversione utente, utente="+utente);
 				
 				if(utente == null || utente.getUsername() == null ){
-					System.out.println("utente inesistente!");
 					String message = "Username errato oppure inesistente!";
 					request.setAttribute("message", message);
 					rd.forward(request, response);
 				}
 				else if(utente.getPassword().equals(cryptedPassword)){
-					System.out.println("password corretta!");
 					HttpSession session = request.getSession(true);
 					session.setAttribute("login",utente);
 					String message = "Ehy "+utente.getUsername()+", Benvenuto in Found It!";
@@ -77,7 +73,6 @@ public class LoginController extends HttpServlet {
 					rd.forward(request, response);
 				}
 				else{
-					System.out.println("password errata!");
 					String message = "Password errata!";
 					request.setAttribute("message", message);
 					rd.forward(request, response);

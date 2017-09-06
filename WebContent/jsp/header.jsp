@@ -12,18 +12,21 @@
     <script src="<%=request.getContextPath()%>/js/login.js"></script></head>
 </head>
 <body onload="showMessage()">
+	<%@page import="model.UtenteBean"%>
+	<% UtenteBean utente= (UtenteBean) request.getSession().getAttribute("login");%>
 	<header>
 		<div class="logo">
 			<a href="<%=request.getContextPath()%>/jsp/home.jsp"">
 				<img alt="logo sito" src="<%=request.getContextPath()%>/images/logoFoundIt!.png" height="80px" width="180px">
 			</a>
 		</div>
+		<% if(utente==null || utente.getUsername()==null){  %>
 		<div class="menu" id="MenuResponsive" >
 			<nav>
 				<ul>
 					<li>
 					<div id="loginContainer">
-                <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
+                <a href="#" id="loginButton"><i class="fa fa-sign-in" aria-hidden="true"> Login</i></a>
                 <div style="clear:both"></div>
                 <div id="loginBox">                
                     <form id="loginForm" action="../LoginController" method="post">
@@ -44,11 +47,30 @@
                 </div>
             </div>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/registrazione.jsp"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
+					<li><a href="<%=request.getContextPath()%>/jsp/registrazione.jsp"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
 					<li><a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveFunction()">&#9776;</a></li>
 				</ul>
 			</nav>
 		</div>	
+		<% }else{ %>
+		<div class="menu" id="MenuResponsive" >
+			<nav>
+				<ul>
+					<li>
+						<div id="loginContainer">
+               				<a href="<%=request.getContextPath()%>/LogoutController" id="logoutButton"><i class="fa fa-sign-out" aria-hidden="true"> Logout</i></a>
+                			<div style="clear:both"></div>
+           				</div>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/jsp/profiloUtente.jsp"><i class="fa fa-user" aria-hidden="true"></i> <%=utente.getUsername()%></a></li>
+					<li><a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveFunction()">&#9776;</a></li>
+				</ul>
+			</nav>
+		</div>	
+		<% } %>
+		
+		
+		
 	</header>
 	
 	<script>
