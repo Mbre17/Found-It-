@@ -154,7 +154,7 @@ public class CampoModelDM {
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		
-		String updateSQL = "UPDATE" + CampoModelDM.TABLE_NAME
+		String updateSQL = "UPDATE " + CampoModelDM.TABLE_NAME
 				+ "SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?, USERNAMEPROPRIETARIO= ?, OFFERTAAPPLICATA= ?"
 				+ " WHERE NOME = ?";
 

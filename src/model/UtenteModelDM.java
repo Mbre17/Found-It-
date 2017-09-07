@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 public class UtenteModelDM implements UtenteModel {
 
-	private static final String TABLE_NAME = "Utente";
+	private static final String TABLE_NAME = "utente";
 
 	@Override
 	public synchronized void doSave(UtenteBean utente) throws SQLException {
@@ -171,24 +171,23 @@ public class UtenteModelDM implements UtenteModel {
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		
-		String updateSQL = "UPDATE" + UtenteModelDM.TABLE_NAME
-				+ "SET USERNAME = ?, PASSWORD = ?, NOME = ?, COGNOME = ?, CITTA = ?, PROVINCIA = ?, CAP = ?, TEL = ?, TIPO = ?, EMAIL = ?"
+		String updateSQL = "UPDATE " + UtenteModelDM.TABLE_NAME
+				+ "SET PASSWORD = ?, NOME = ?, COGNOME = ?, CITTA = ?, PROVINCIA = ?, CAP = ?, TEL = ?, TIPO = ?, EMAIL = ?"
 				+ " WHERE USERNAME = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			preparedStatement.setString(1, utenteToUpdate.getUsername());
-			preparedStatement.setString(2, utenteToUpdate.getPassword());
-			preparedStatement.setString(3, utenteToUpdate.getNome());
-			preparedStatement.setString(4, utenteToUpdate.getCognome());
-			preparedStatement.setString(5, utenteToUpdate.getcitta());
-			preparedStatement.setString(6, utenteToUpdate.getProvincia());
-			preparedStatement.setInt(7, utenteToUpdate.getCap());
-			preparedStatement.setString(8, utenteToUpdate.getTelefono());
-			preparedStatement.setString(9, utenteToUpdate.getTipo());
-			preparedStatement.setString(10, utenteToUpdate.getEmail());
-			preparedStatement.setString(11, utenteToUpdate.getUsername());
+			preparedStatement.setString(1, utenteToUpdate.getPassword());
+			preparedStatement.setString(2, utenteToUpdate.getNome());
+			preparedStatement.setString(3, utenteToUpdate.getCognome());
+			preparedStatement.setString(4, utenteToUpdate.getcitta());
+			preparedStatement.setString(5, utenteToUpdate.getProvincia());
+			preparedStatement.setInt(6, utenteToUpdate.getCap());
+			preparedStatement.setString(7, utenteToUpdate.getTelefono());
+			preparedStatement.setString(8, utenteToUpdate.getTipo());
+			preparedStatement.setString(9, utenteToUpdate.getEmail());
+			preparedStatement.setString(10, utenteToUpdate.getUsername());
 
 			result = preparedStatement.executeUpdate();
 

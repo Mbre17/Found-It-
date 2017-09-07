@@ -63,6 +63,9 @@
            				</div>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/jsp/profiloUtente.jsp"><i class="fa fa-user" aria-hidden="true"></i> <%=utente.getUsername()%></a></li>
+					<% if(utente.getTipo().equals("admin")){%>
+					<li><a href="<%=request.getContextPath()%>/jsp/paginaAdmin.jsp"><i class="fa fa-info-circle" aria-hidden="true"></i> Opzioni Amministratore</a></li>
+					<%}%>
 					<li><a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveFunction()">&#9776;</a></li>
 				</ul>
 			</nav>

@@ -38,7 +38,7 @@
 		<div class="container ">
 			<br><br><br>	
 			<div class="image-box">
-				<center><b>Nome Utente</b></center>
+				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%> </b></center>
 				<br>
             	<img src="../images/userStandard.png" id="user" alt="fotoUser">
             	<br>
@@ -54,9 +54,9 @@
 			</div>
 
 			<div align="center" id="Dati Personali" class="tabcontent">
-			<h2>Dati Profilo</h2>
+			<h2>Dati Personali</h2>
   				<div class="allineasinistra">
-  				<form name="dati personali" action="<%=request.getContextPath()%>/ProfiloController" method="POST">
+  				<form name="datiPersonali" action="<%=request.getContextPath()%>/ProfiloController" method="POST" onsubmit="return validateDatiPersonali()">
         			<section style="width: 50%;">
         				<div class="displayTab">
 							<label class="registra">Nome</label>						
@@ -65,12 +65,12 @@
 						
 						<div class="displayTab">
 							<label class="registra">Cognome</label>	
-							<input id="cogname" type="text" name="cognome" value="<%= utente.getCognome() %>">
+							<input id="cognome" type="text" name="cognome" value="<%= utente.getCognome() %>">
 						</div>
 			
 						<div class="displayTab"> 
 							<label class="registra">Città</label>
-							<input id="città" type="text" name="città" value="<%= utente.getcitta() %>">
+							<input id="citta" type="text" name="citta" value="<%= utente.getcitta() %>">
 						</div>
 					</section>
 							
@@ -102,6 +102,7 @@
   				<h2>Dati Profilo</h2>
   				
   				<div style="width: 50%; margin-left: auto; margin-right: auto;">
+  					<form name="datiProfilo" action="<%=request.getContextPath()%>/ProfiloController" method="POST">
   					<div class="displayTab">
 						<label  class="registra">Username</label>
 				 		<input id="username" type="text" name="username" readonly="readonly" value="<%= utente.getUsername() %>"> 
@@ -119,8 +120,9 @@
    					<br><br>
 					<button style="width:40%; margin-left:20%;" type="submit" id="cambiaDatiProfilo" name="cambiaDatiProfilo">Cambia</button>
 					<br><br><br>
+					</form>
    				</div>
-   					
+   				
 			</div>
 
 			<div id="Privacy e Sicurezza" class="tabcontent">
@@ -135,6 +137,8 @@
 </div>
 
 	<%@include file="footer.jsp"%>
+	<script type="text/javascript" src ="<%=request.getContextPath()%>/js/testRegistrazione.js"></script>
+	
 	<script>
 		function openCity(evt, cityName) {
     		var i, tabcontent, tablinks;
@@ -151,6 +155,53 @@
 		}
 		
 		document.getElementById("defaultOpen").click();
+		
+		function validateDatiPersonali(){
+			var nome = document.datiPersonali.nome.value;
+			var cognome = document.datiPersonali.cognome.value;
+			var citta = document.datiPersonali.citta.value;
+			var provincia = document.datiPersonali.provincia.value;
+			var cap = document.datiPersonali.cap.value;
+			var telefono = document.datiPersonali.telefono.value;
+			
+			if (isEmpty(nome,"nome")){
+				return false;
+			}
+			if (!isAValidString(nome,regex.nome,"nome")){
+				return false;
+			}
+			if (isEmpty(cognome,"cognome")){
+				return false;
+			}
+			if (!isAValidString(cognome,regex.cognome,"cognome")){
+				return false;
+			}
+			if (isEmpty(citta,"citta")){
+				return false;
+			}
+			if (!isAValidString(citta,regex.citta,"citta")){
+				return false;
+			}
+			if (isEmpty(provincia,"provincia")){
+				return false;
+			}
+			if (!isAValidString(provincia,regex.provincia,"provincia")){
+				return false;
+			}
+			if (isEmpty(cap,"cap")){
+				return false;
+			}
+			if (!isAValidString(cap,regex.cap,"cap")){
+				return false;
+			}
+			if (isEmpty(telefono,"telefono")){
+				return false;
+			}
+			if (!isAValidString(telefono,regex.telefono,"telefono")){
+				return false;
+			}
+			return true;
+		}
 	</script>
      	
 </body>

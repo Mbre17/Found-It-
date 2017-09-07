@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import model.UtenteBean;
 import model.UtenteModel;
 import model.UtenteModelDM;
+import util.ValidationUtil;
 
 /**
  * Servlet implementation class ProfiloController
@@ -49,55 +50,70 @@ public class ProfiloController extends HttpServlet {
 		HttpSession session = request.getSession();
 		UtenteBean utente= (UtenteBean) session.getAttribute("login");
 		
-		request.setAttribute("nome", utente.getNome());
-		request.setAttribute("cognome", utente.getCognome());
-		request.setAttribute("citta", utente.getcitta());
-		request.setAttribute("activityProvince", utente.getProvincia());
-		request.setAttribute("cap", utente.getCap());
-		request.setAttribute("telefono", utente.getTelefono());
-		request.setAttribute("username", utente.getUsername());
-		request.setAttribute("password", utente.getPassword());
-		request.setAttribute("email", utente.getEmail());
-		
-		/*
-		String nome= request.getParameter("nome");
+		// Copio tutti i parametri di input nelle variabili locali
+		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String citta = request.getParameter("citta");
-		String provincia = request.getParameter("activityProvince");
+		String provincia = request.getParameter("provincia");
 		String cap = request.getParameter("cap");
 		String telefono = request.getParameter("telefono");
-		
-		utente.setNome(nome);
-		utente.setCognome(cognome);
-		utente.setcitta(citta);
-		utente.setProvincia(provincia);
-		utente.setCap(Integer.parseInt(cap));
-		utente.setTelefono(telefono);
-		*/
-		try {
-			model.doRetrieveByKey(utente.getUsername());
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+	
+		if( ValidationUtil.isEmpty(nome) || !ValidationUtil.isAValidString(nome,ValidationUtil.REGEX_NOME)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: nome non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
 		}
-
-		
-		try{
-			if(utente.getUsername() == null){
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Errore: campo vuoto!');");
-				out.println("location='"+request.getContextPath()+"/jsp/home.jsp';");
-				out.println("</script>");
-			}
-		//	model.doUpdate(utente);
-			ServletContext sc = getServletContext();
-			RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
-			rd.forward(request, response);
-		} 
-		catch(Exception e) 
-		{
+		 if( ValidationUtil.isEmpty(cognome) || !ValidationUtil.isAValidString(cognome,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: cognome non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(citta) || !ValidationUtil.isAValidString(citta,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: citta' non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(provincia) || !ValidationUtil.isAValidString(provincia,ValidationUtil.REGEX_GENERALE)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: provincia non inserita oppure non valida!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(cap) || !ValidationUtil.isAValidString(cap,ValidationUtil.REGEX_CAP)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: cap non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
+		}
+		 if( ValidationUtil.isEmpty(telefono) || !ValidationUtil.isAValidString(telefono,ValidationUtil.REGEX_TELEFONO)){
+			out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Errore: telefono non inserito oppure non valido!');");
+		    out.println("location='"+request.getContextPath()+"/jsp/profiloUtente.jsp';");
+		    out.println("</script>");
+		}
+		 
+		 if(utente!=null){
+			 utente.setNome(nome);
+			 utente.setCognome(cognome);
+			 utente.setcitta(citta);
+			 utente.setProvincia(provincia);
+			 utente.setCap(Integer.parseInt(cap));
+			 utente.setTelefono(telefono);
+		 }
+		 try {
+			model.doUpdate(utente);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+		 ServletContext sc = getServletContext();
+		 RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
+		 rd.forward(request, response);	
+		
+	}	
+	
 
 }
