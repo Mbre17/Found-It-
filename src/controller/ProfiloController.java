@@ -48,7 +48,8 @@ public class ProfiloController extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		UtenteBean utente= (UtenteBean) session.getAttribute("login");
+		UtenteBean utenteSessione= (UtenteBean) session.getAttribute("login");
+		UtenteBean utente= new UtenteBean();
 		
 		// Copio tutti i parametri di input nelle variabili locali
 		String nome = request.getParameter("nome");
@@ -57,7 +58,7 @@ public class ProfiloController extends HttpServlet {
 		String provincia = request.getParameter("provincia");
 		String cap = request.getParameter("cap");
 		String telefono = request.getParameter("telefono");
-	
+		
 		if( ValidationUtil.isEmpty(nome) || !ValidationUtil.isAValidString(nome,ValidationUtil.REGEX_NOME)){
 			out.println("<script type=\"text/javascript\">");
 		    out.println("alert('Errore: nome non inserito oppure non valido!');");
@@ -102,13 +103,26 @@ public class ProfiloController extends HttpServlet {
 			 utente.setProvincia(provincia);
 			 utente.setCap(Integer.parseInt(cap));
 			 utente.setTelefono(telefono);
+			 utente.setUsername(utenteSessione.getUsername());
+			 utente.setPassword(utenteSessione.getPassword());
+			 utente.setEmail(utenteSessione.getEmail());
+			 utente.setTipo(utenteSessione.getTipo());
 		 }
-		 try {
-			model.doUpdate(utente);
-		} catch (SQLException e) {
+		 if(!(utente.equals(utenteSessione))){
+			 try {
+				 model.doUpdate(utente);
+			 } catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				 e.printStackTrace();
+			 }
+			 utenteSessione.setNome(nome);
+			 utenteSessione.setCognome(cognome);
+			 utenteSessione.setcitta(citta);
+			 utenteSessione.setProvincia(provincia);
+			 utenteSessione.setCap(Integer.parseInt(cap));
+			 utenteSessione.setTelefono(telefono);
+			 
+		 }
 		 ServletContext sc = getServletContext();
 		 RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
 		 rd.forward(request, response);	

@@ -40,7 +40,7 @@
 			<div class="image-box">
 				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%> </b></center>
 				<br>
-            	<img src="../images/userStandard.png" id="user" alt="fotoUser">
+            	<img src="<%=request.getContextPath()%>/images/userStandard.png" id="user" alt="fotoUser">
             	<br>
             	<button type="submit" id="submit" name="submit">Cambia immagine del profilo</button>
  				<br><br>
