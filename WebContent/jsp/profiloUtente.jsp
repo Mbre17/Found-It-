@@ -17,6 +17,12 @@
 		div.displayTab label.registra {
 			min-width: 100px;
 		}
+		div.displayTab label.datiprofilo {
+			min-width: 200px;
+			font-weight: bold;
+			
+			
+		}
 	</style>
 </head>
 <body>
@@ -104,17 +110,22 @@
   				<div style="width: 50%; margin-left: auto; margin-right: auto;">
   					<form name="datiProfilo" action="<%=request.getContextPath()%>/ProfiloController" method="POST">
   					<div class="displayTab">
-						<label  class="registra">Username</label>
+						<label  class="datiprofilo">Username</label>
 				 		<input id="username" type="text" name="username" readonly="readonly" value="<%= utente.getUsername() %>"> 
 					</div>
 				
 					<div class="displayTab">
-						<label  class="registra">Password</label>
+						<label  class="datiprofilo">Password</label>
 				 		<input	id="password" type="password" name="password" value="<%= utente.getPassword() %>">	 
+					</div>
+					
+					<div class="displayTab">
+						<label  class="datiprofilo">Conferma password</label>
+				 		<input	id="confpassword" type="password" name="confermapassword" value="<%= utente.getPassword() %>">	 
 					</div>
 				
 					<div class="displayTab">
-						<label  class="registra">Email<span style="color: #FF0000">*</span></label>
+						<label  class="datiprofilo">Email<span style="color: #FF0000">*</span></label>
 				 		<input id="email" type="email" name="email" value="<%= utente.getEmail() %>">				 
    					</div>
    					<br><br>
