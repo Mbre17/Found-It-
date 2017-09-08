@@ -172,8 +172,8 @@ public class UtenteModelDM implements UtenteModel {
 		int result = 0;
 		
 		String updateSQL = "UPDATE " + UtenteModelDM.TABLE_NAME
-				+ "SET PASSWORD = ?, NOME = ?, COGNOME = ?, CITTA = ?, PROVINCIA = ?, CAP = ?, TEL = ?, TIPO = ?, EMAIL = ?"
-				+ " WHERE USERNAME = ?";
+				+ " SET PASSWORD=?, NOME=?, COGNOME=?, CITTA=?, PROVINCIA=?, CAP=?, TEL=?, TIPO=?, EMAIL=?"
+				+ " WHERE USERNAME=?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();

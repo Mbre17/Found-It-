@@ -84,7 +84,7 @@ public class PrenotazioneModelDM implements PrenotazioneModel {
 		int result = 0;
 		
 		String updateSQL = "UPDATE" + PrenotazioneModelDM.TABLE_NAME
-				+ "SET DATA = ?, ORA = ?, IDUTENTE = ?, NOMECAMPOSPORTIVO = ?"
+				+ " SET DATA = ?, ORA = ?, IDUTENTE = ?, NOMECAMPOSPORTIVO = ?"
 				+ " WHERE DATA = ? AND ORA = ? AND IDUTENTE = ? AND NOMECAMPOSPORTIVO = ?";
 
 		try {

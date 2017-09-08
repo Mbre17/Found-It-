@@ -155,7 +155,7 @@ public class CampoModelDM {
 		int result = 0;
 		
 		String updateSQL = "UPDATE " + CampoModelDM.TABLE_NAME
-				+ "SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?, USERNAMEPROPRIETARIO= ?, OFFERTAAPPLICATA= ?"
+				+ " SET NOME = ?, FASCIAORARIA = ?, LUOGO = ?, TIPO = ?, PREZZO = ?, USERNAMEPROPRIETARIO= ?, OFFERTAAPPLICATA= ?"
 				+ " WHERE NOME = ?";
 
 		try {
