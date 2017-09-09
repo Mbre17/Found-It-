@@ -34,13 +34,21 @@
     <servlet-name>ProfiloController</servlet-name>
     <url-pattern>/profilo</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>LogoutController</servlet-name>
     <servlet-class>controller</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RicercaController</servlet-name>
+    <servlet-class>controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RicercaController</servlet-name>
+    <url-pattern>/ricerca</url-pattern>
   </servlet-mapping>
 </web-app>
