@@ -108,7 +108,7 @@
   				<h2>Dati Profilo</h2>
   				
   				<div style="width: 50%; margin-left: auto; margin-right: auto;">
-  					<form name="datiProfilo" action="<%=request.getContextPath()%>/ProfiloController" method="POST">
+  					<form name="datiProfilo" action="<%=request.getContextPath()%>/DatiProfiloController" method="POST" onsubmit="return validateDatiProfilo()">
   					<div class="displayTab">
 						<label  class="datiprofilo">Username</label>
 				 		<input id="username" type="text" name="username" readonly="readonly" value="<%= utente.getUsername() %>"> 
@@ -121,7 +121,7 @@
 					
 					<div class="displayTab">
 						<label  class="datiprofilo">Conferma password</label>
-				 		<input	id="confpassword" type="password" name="confermapassword" value="<%= utente.getPassword() %>">	 
+				 		<input	id="confpassword" type="password" name="confpassword" value="<%= utente.getPassword() %>">	 
 					</div>
 				
 					<div class="displayTab">
@@ -211,6 +211,34 @@
 			if (!isAValidString(telefono,regex.telefono,"telefono")){
 				return false;
 			}
+			return true;
+		}
+		
+		function validateDatiProfilo(){
+			var password = document.datiProfilo.password.value;
+			var confpassword = document.datiProfilo.confpassword.value;
+			var email = document.datiProfilo.email.value;
+			
+			if (isEmpty(password,"password")){
+				return false;
+			}
+			if (!isAValidString(password,regex.password,"password")){
+				return false;
+			}
+			if (isEmpty(confpassword,"confpassword")){
+				return false;
+			}
+			if (!(confpassword == password)){
+				alert("Errore: I campi password e conferma password devono corrispondere!")
+				return false;
+			}
+			if (isEmpty(email,"email")){
+				return false;
+			}
+			if (!isAValidString(email,regex.email,"email")){
+				return false;
+			}
+		
 			return true;
 		}
 	</script>
