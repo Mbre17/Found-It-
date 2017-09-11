@@ -51,4 +51,13 @@
     <servlet-name>RicercaController</servlet-name>
     <url-pattern>/ricerca</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>DatiProfiloCintroller</servlet-name>
+    <servlet-class>controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatiProfiloCintroller</servlet-name>
+    <url-pattern>/datiProfilo</url-pattern>
+  </servlet-mapping>
 </web-app>
