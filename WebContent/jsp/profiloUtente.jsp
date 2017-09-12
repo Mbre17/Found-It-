@@ -38,13 +38,13 @@
 	
 	<div id="containerSuperiore">
 		<div class="top">
-			<h2><center>PROFILO UTENTE</center></h2>
+			<h2><center> PROFILO <label style="text-transform: uppercase;"><%=utente.getTipo() %></label></center></h2>
 		</div>
 		<hr>
 		<div class="container ">
 			<br><br><br>	
 			<div class="image-box">
-				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%> </b></center>
+				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%></b> </center>
 				<br>
             	<img src="<%=request.getContextPath()%>/images/userStandard.png" id="user" alt="fotoUser">
             	<br>
