@@ -109,9 +109,8 @@ public class DatiProfiloController extends HttpServlet {
 			 utenteSessione.setPassword(password);
 			 utenteSessione.setEmail(email);			 
 		 }
-		 ServletContext sc = getServletContext();
-		 RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
-		 rd.forward(request, response);	
+		 String redirectedPage = "/jsp/profiloUtente.jsp";
+		 response.sendRedirect(request.getContextPath() + redirectedPage);
 	}
 
 }

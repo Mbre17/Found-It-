@@ -31,8 +31,8 @@
 		    ServletContext sc = getServletContext();
 			RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
 			String message = "Effettuare il login prima di accedere al profilo utente!";
-			request.setAttribute("message", message);
-			rd.forward(request, response);		   
+			request.getSession().setAttribute("message", message);
+			rd.forward(request, response);
 	   };
 	%>
 	

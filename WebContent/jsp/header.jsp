@@ -96,6 +96,6 @@
     		}
 		}
 	</script>
-	<div id="snackbar"><%= request.getAttribute("message")%></div>	
+	<div id="snackbar"><%= request.getSession().getAttribute("message")%></div>	
 </body>
 </html>

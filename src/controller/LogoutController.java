@@ -37,9 +37,9 @@ public class LogoutController extends HttpServlet {
         
 		HttpSession session=request.getSession();  
         session.invalidate();
-		  
-        request.getRequestDispatcher("/jsp/home.jsp").include(request, response);  
-        out.close();
+        String redirectedPage = "/jsp/home.jsp";
+		response.sendRedirect(request.getContextPath() + redirectedPage);	
+		 out.close();
 	}
 
 	/**

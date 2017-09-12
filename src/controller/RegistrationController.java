@@ -156,9 +156,8 @@ public class RegistrationController extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
-		ServletContext sc = getServletContext();
-		RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
-		rd.forward(request, response);	
+		String redirectedPage = "/jsp/home.jsp";
+		response.sendRedirect(request.getContextPath() + redirectedPage);
 	
 	}
 	
