@@ -33,12 +33,12 @@ public class LogoutController extends HttpServlet {
         PrintWriter out=response.getWriter();  
          
         String message = "Logout effettuato con successo!";
-		request.setAttribute("message", message);
+		request.getSession().setAttribute("message", message);
         
 		HttpSession session=request.getSession();  
-        session.invalidate();
-        String redirectedPage = "/jsp/home.jsp";
+		String redirectedPage = "/jsp/home.jsp";
 		response.sendRedirect(request.getContextPath() + redirectedPage);	
+		session.invalidate();
 		 out.close();
 	}
 
