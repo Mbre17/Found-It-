@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class CampoModelDM implements CampoModel{
-	private static final String TABLE_NAME = "'campo sportivo'";
+	private static final String TABLE_NAME = "`campo sportivo`";
 
 	public synchronized void doSave(CampoBean campo) throws SQLException {
 
@@ -16,7 +16,7 @@ public class CampoModelDM implements CampoModel{
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + CampoModelDM.TABLE_NAME
-				+ " (NOME,FASCIAORARIA,LUOGO,TIPO,PREZZO,USERNAMEPROPRIETARIO,OFFERTAAPPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (NOME,FASCIA ORARIA,LUOGO,TIPO,PREZZO,USERNAME PROPRIETARIO,OFFERTA APPLICATA) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -128,12 +128,12 @@ public class CampoModelDM implements CampoModel{
 				CampoBean campo = new CampoBean();
 
 				campo.setNome(rs.getString("NOME"));
-				campo.setFasciaOraria(rs.getInt("FASCIAORARIA"));
+				campo.setFasciaOraria(rs.getInt("FASCIA ORARIA"));
 				campo.setLuogo(rs.getString("LUOGO"));
-				campo.setTipo(rs.getString("TIPO"));
+				campo.setTipo(rs.getString("TIPOLOGIA"));
 				campo.setPrezzo(rs.getFloat("PREZZO"));
-				campo.setUsernameProprietario(rs.getString("USERNAMEPROPRIETARIO"));
-				campo.setOffertaApplicata(rs.getInt("OFFERTAAPPLICATA"));
+				campo.setUsernameProprietario(rs.getString("USERNAME PROPRIETARIO"));
+				campo.setOffertaApplicata(rs.getInt("OFFERTA APPLICATA"));
 
 				campi.add(campo);
 			}

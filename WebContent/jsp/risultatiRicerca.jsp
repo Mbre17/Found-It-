@@ -87,7 +87,7 @@
 						<h3 align="center"><%=bean.getNome()%></h3>
 						<p>Il campo di gioco <%=bean.getNome()%> e' situato a <%=bean.getLuogo()%> ed il prezzo per accedere alla struttura è di <%=bean.getPrezzo()%> euro.
 						   La struttura è aperta dalle <%=Integer.parseInt(new Integer(bean.getFasciaOraria()).toString().substring(0, 2))%> alle 
-						   <%=Integer.parseInt(new Integer(bean.getFasciaOraria()).toString().substring(2))%> 
+						   <%=Integer.parseInt(new Integer(bean.getFasciaOraria()).toString().substring(2))%>.
 						</p>
 						<input type="submit" value="Prenota!" style="float: right;">
 					</div>
@@ -97,42 +97,11 @@
 						}
 					} else {
 				%>
-					<h1>Non ci sono campi che soddisfano i parametri richiesti! effettuare una nuova ricerca</h1>
+					<h1>Non ci sono campi che soddisfano i parametri richiesti! effettuare una nuova ricerca.</h1>
 				
 				<%
 				}
 				%>
-				<div class="elementoDellaRicerca">
-					<img alt="fotoCampo" src="../images/userStandard.png" style="height: 100px; width: 100px; float: left;">
-					<div class="descrizioneRicerca">
-						<h3 align="center">Lorem Ipsum</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper nulla tincidunt pharetra efficitur.
-						 Fusce ut lectus ut eros venenatis dapibus sed ac ipsum. Phasellus rutrum iaculis molestie. Maecenas varius
-						  erat a neque ultrices, at vestibulum diam feugiat. Vestibulum neque lectus, tristique quis posuere eget,
-						   blandit ut ante. Suspendisse tincidunt urna ut neque scelerisque pharetra. Vivamus dictum velit ante, in
-						    euismod mi aliquet ut. Morbi nibh magna, lobortis vel neque venenatis, porta maximus ante. Phasellus 
-						    condimentum porttitor dapibus. Duis auctor faucibus tellus, quis viverra justo ultrices maximus. Maecenas
-						     vel lorem eu lorem gravida venenatis ut quis turpis. Morbi a condimentum neque. Vivamus sed porta mi.
-						      Fusce iaculis nibh et massa vulputate vulputate.</p>
-						<input type="submit" value="Prenota!" style="float: right;">
-					</div>
-				</div>
-				
-				<div class="elementoDellaRicerca">
-					<img alt="fotoCampo" src="../images/userStandard.png" style="height: 100px; width: 100px; float: left;">
-					<div class="descrizioneRicerca">
-						<h3 align="center">Lorem Ipsum</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper nulla tincidunt pharetra efficitur.
-						 Fusce ut lectus ut eros venenatis dapibus sed ac ipsum. Phasellus rutrum iaculis molestie. Maecenas varius
-						  erat a neque ultrices, at vestibulum diam feugiat. Vestibulum neque lectus, tristique quis posuere eget,
-						   blandit ut ante. Suspendisse tincidunt urna ut neque scelerisque pharetra. Vivamus dictum velit ante, in
-						    euismod mi aliquet ut. Morbi nibh magna, lobortis vel neque venenatis, porta maximus ante. Phasellus 
-						    condimentum porttitor dapibus. Duis auctor faucibus tellus, quis viverra justo ultrices maximus. Maecenas
-						     vel lorem eu lorem gravida venenatis ut quis turpis. Morbi a condimentum neque. Vivamus sed porta mi.
-						      Fusce iaculis nibh et massa vulputate vulputate.</p>
-						<input type="submit" value="Prenota!" style="float: right;">
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -52,7 +52,7 @@ public class RicercaController extends HttpServlet {
 		System.out.println("I parametri passati sono: tipo="+tipo+",luogo="+luogo+",data="+data+",ora="+ora+",minuti="+minuti+"latitudine="+lat+",longitudine="+lng);
 		
 		try {
-			Collection<?> campi = model.doRetrieveAll("tipo");
+			Collection<?> campi = model.doRetrieveAll("tipologia");
 				if (campi != null && campi.size() != 0) {
 					Iterator<?> it = campi.iterator();
 					while (it.hasNext()) {
@@ -64,9 +64,8 @@ public class RicercaController extends HttpServlet {
 						}
 					}
 					request.getSession().setAttribute("risultatiRicerca", risultatiRicerca);
-					response.sendRedirect("/jsp/risultatiRicerca.jsp");
+					response.sendRedirect(request.getContextPath()+"/jsp/risultatiRicerca.jsp");
 				}
-				response.sendRedirect("/jsp/risultatiRicerca.jsp");
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
