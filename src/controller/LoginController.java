@@ -53,10 +53,10 @@ public class LoginController extends HttpServlet {
 			String username= request.getParameter("username");
 			String password= request.getParameter("password");
 			String cryptedPassword = toSHA1(password.getBytes());
-			
+			String redirectedPage;
 			try {
 				UtenteBean utente= model.doRetrieveByKey(username);
-				String redirectedPage = "/jsp/home.jsp";				
+				redirectedPage= "/jsp/home.jsp";
 				
 				if(utente == null || utente.getUsername() == null ){
 					String message = "Username errato oppure inesistente!";
@@ -68,7 +68,22 @@ public class LoginController extends HttpServlet {
 					session.setAttribute("login",utente);
 					String message = "Ehy "+utente.getUsername()+", Benvenuto in Found It!";
 					request.getSession().setAttribute("message", message);
-					response.sendRedirect(request.getContextPath() + redirectedPage);
+					if(utente.getTipo().equals("admin")){
+						request.getSession().setAttribute("adminRoles", new Boolean(true));
+						redirectedPage = "/jsp/paginaAdmin.jsp";
+						response.sendRedirect(request.getContextPath() + redirectedPage);
+						}
+					else if(utente.getTipo().equals("bannato")){
+						message="Utente bannato! Contattare l'amministratore";
+						request.getSession().setAttribute("message", message);
+						redirectedPage = "/jsp/home.jsp";
+						response.sendRedirect(request.getContextPath() + redirectedPage);	
+						session.invalidate();
+					}
+					else{
+						response.sendRedirect(request.getContextPath() + redirectedPage);
+					}
+
 				}
 				else{
 					String message = "Password errata!";
@@ -76,10 +91,12 @@ public class LoginController extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + redirectedPage);
 
 				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}	
+			
 }
 	
 	
