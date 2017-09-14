@@ -123,10 +123,8 @@ public class ProfiloController extends HttpServlet {
 			 utenteSessione.setTelefono(telefono);
 			 
 		 }
-		 ServletContext sc = getServletContext();
-		 RequestDispatcher rd = sc.getRequestDispatcher("/jsp/profiloUtente.jsp");
-		 rd.forward(request, response);	
-		
+		 String redirectedPage = "/jsp/profiloUtente.jsp";
+		 response.sendRedirect(request.getContextPath() + redirectedPage);
 	}	
 	
 

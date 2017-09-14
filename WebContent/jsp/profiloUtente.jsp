@@ -31,20 +31,20 @@
 		    ServletContext sc = getServletContext();
 			RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
 			String message = "Effettuare il login prima di accedere al profilo utente!";
-			request.setAttribute("message", message);
-			rd.forward(request, response);		   
+			request.getSession().setAttribute("message", message);
+			rd.forward(request, response);
 	   };
 	%>
 	
 	<div id="containerSuperiore">
 		<div class="top">
-			<h2><center>PROFILO UTENTE</center></h2>
+			<h2><center> PROFILO <label style="text-transform: uppercase;"><%=utente.getTipo() %></label></center></h2>
 		</div>
 		<hr>
 		<div class="container ">
 			<br><br><br>	
 			<div class="image-box">
-				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%> </b></center>
+				<center><b> <%=utente.getNome()%> <%=utente.getCognome()%></b> </center>
 				<br>
             	<img src="<%=request.getContextPath()%>/images/userStandard.png" id="user" alt="fotoUser">
             	<br>

@@ -56,26 +56,25 @@ public class LoginController extends HttpServlet {
 			
 			try {
 				UtenteBean utente= model.doRetrieveByKey(username);
-				ServletContext sc = getServletContext();
-				RequestDispatcher rd = sc.getRequestDispatcher("/jsp/home.jsp");
-				
+				String redirectedPage = "/jsp/home.jsp";				
 				
 				if(utente == null || utente.getUsername() == null ){
 					String message = "Username errato oppure inesistente!";
-					request.setAttribute("message", message);
-					rd.forward(request, response);
+					request.getSession().setAttribute("message", message);
+					response.sendRedirect(request.getContextPath() + redirectedPage);
 				}
 				else if(utente.getPassword().equals(cryptedPassword)){
 					HttpSession session = request.getSession(true);
 					session.setAttribute("login",utente);
 					String message = "Ehy "+utente.getUsername()+", Benvenuto in Found It!";
-					request.setAttribute("message", message);
-					rd.forward(request, response);
+					request.getSession().setAttribute("message", message);
+					response.sendRedirect(request.getContextPath() + redirectedPage);
 				}
 				else{
 					String message = "Password errata!";
-					request.setAttribute("message", message);
-					rd.forward(request, response);
+					request.getSession().setAttribute("message", message);
+					response.sendRedirect(request.getContextPath() + redirectedPage);
+
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
