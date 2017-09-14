@@ -55,7 +55,7 @@
 							<td><input name="data" type="date" size="30"></td>					
 							<td>
 								<input name="ora" type="number" name="ora" min="0" max="23">:
-								<input name="minuti"type="number" name="minuti" min="0" max="59">
+								<input name="minuti" type="number" name="minuti" min="0" max="59">
 								<input name="latitude" id="latitude" type="hidden"/>
 								<input name="longitude" id="longitude" type="hidden"/>
 							</td>	

@@ -50,29 +50,31 @@
  	<%	Collection<CampoBean> risultatiRicerca = (Collection<CampoBean>) request.getSession().getAttribute("risultatiRicerca");%>
 	<div id="containerSuperiore">
 		<div class="container">
-			<div class="sideBarDiRicerca">
-				<label>Quale sport vuoi praticare?</label>
-				<select class="inSideBar">	
-					<option value="calcio">calcio</option>
-					<option value="calcio a 5">calcio a 5</option>
-					<option value="pallavolo">pallavolo</option>
-					<option value="basket">basket</option>
-				</select>
-				<hr>
-				<label>Dove?</label>
-				<input class="inSideBar" id="geocomplete" type="text" size="30" />
-				<hr>
-				<label>Quando?</label> 
-				<br>
-				<input class="inSideBar" type="date" size="30">
-				<hr>
-				<label>A che ora?</label>
-				<br> 
-				<input class="inSideBar" type="number" name="ora" min="0" max="23">:
-				<input class="inSideBar" type="number" name="minuti" min="0" max="59">
-				<br><br>
-				<input type="submit" value="Effettua nuova ricerca!">
-				<br><br>
+			<form class="form-di-ricerca-home" name="formRicerca" method="GET" action="<%=request.getContextPath()%>/RicercaController" onsubmit="return trovaCoordinate()">
+				<div class="sideBarDiRicerca">
+					<label>Quale sport vuoi praticare?</label>
+					<select name="tipo" class="inSideBar">	
+						<option value="calcio">calcio</option>
+						<option value="calcio a 5">calcio a 5</option>
+						<option value="pallavolo">pallavolo</option>
+						<option value="basket">basket</option>
+					</select>
+					<hr>
+					<label>Dove?</label>
+					<input  name="luogo" class="inSideBar" id="geocomplete" type="text" size="30" />
+					<hr>
+					<label>Quando?</label> 
+					<br>
+					<input name="data" class="inSideBar" type="date" size="30">
+					<hr>
+					<label>A che ora?</label>
+					<br> 
+					<input name="ora" class="inSideBar" type="number" name="ora" min="0" max="23">:
+					<input name="minuti" class="inSideBar" type="number" name="minuti" min="0" max="59">
+					<br><br>
+					<input type="submit" value="Effettua nuova ricerca!">
+					<br><br>
+				</form>
 			</div>
 			<div class="containerRisultati">
 				<% 
