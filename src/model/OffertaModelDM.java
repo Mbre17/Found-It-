@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class OffertaModelDM {
+public class OffertaModelDM implements OffertaModel{
 	private static final String TABLE_NAME = "Offerta";
 
 	public synchronized void doSave(OffertaBean offerta) throws SQLException {

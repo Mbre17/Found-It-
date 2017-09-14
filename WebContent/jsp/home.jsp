@@ -33,7 +33,7 @@
 		<hr></hr>
 
 		<div class="container">
-			<form class="form-di-ricerca-home" method="get" action="">
+			<form class="form-di-ricerca-home" name="formRicerca" method="GET" action="<%=request.getContextPath()%>/RicercaController" onsubmit="return trovaCoordinate()">
 				<div class="container-form-di-ricerca-home">
 					<table>
 						<tr>
@@ -44,18 +44,20 @@
 						</tr>
 						<tr>
 							<td>
-								<select>
+								<select name="tipo">
 									<option value="calcio">calcio</option>
 									<option value="calcio a 5">calcio a 5</option>
 									<option value="pallavolo">pallavolo</option>
 									<option value="basket">basket</option>
 								</select>
 							</td>
-							<td><input id="geocomplete" type="text" size="40" /></td>
-							<td><input type="date" size="30"></td>					
+							<td><input name="luogo" id="geocomplete" type="text" size="40" /></td>
+							<td><input name="data" type="date" size="30"></td>					
 							<td>
-								<input type="number" name="ora" min="0" max="23">:
-								<input type="number" name="minuti" min="0" max="59">
+								<input name="ora" type="number" name="ora" min="0" max="23">:
+								<input name="minuti"type="number" name="minuti" min="0" max="59">
+								<input name="latitude" id="latitude" type="hidden"/>
+								<input name="longitude" id="longitude" type="hidden"/>
 							</td>	
 						</tr>
 					</table>
@@ -64,7 +66,7 @@
 				<br>
 				<hr>
 				<br>
-				<input type="submit" value="cerca!">
+				<input id="cerca" type="submit" value="cerca!">
 			</form>
 			<br>
 		</div>
@@ -95,7 +97,25 @@
           $("#geocomplete").trigger("geocode");
         });        
       });
-    </script>
+      
+  		function trovaCoordinate(){
+  			var input_address = $("#geocomplete").val();
+  			var geocoder = new google.maps.Geocoder();
+  			geocoder.geocode( { address: input_address }, function(results, status) {
+  				if (status == google.maps.GeocoderStatus.OK) {
+  					var lat = results[0].geometry.location.lat();
+  					var lng = results[0].geometry.location.lng();
+  					$("latitude").val()=lat;
+  					$("longitude").val()=lng;
+  					return true
+  					}
+  				else {
+  					alert("Indirizzo non valido!");
+  					return false
+  					}
+  				});
+  		}
+      </script>
 	
 </body>
 </html>

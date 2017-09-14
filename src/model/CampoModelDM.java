@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class CampoModelDM {
-	private static final String TABLE_NAME = "campo sportivo";
+public class CampoModelDM implements CampoModel{
+	private static final String TABLE_NAME = "'campo sportivo'";
 
 	public synchronized void doSave(CampoBean campo) throws SQLException {
 
